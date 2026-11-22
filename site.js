@@ -224,13 +224,13 @@
     const W = 540, H = 290, m = { l: 56, r: 20, t: 24, b: 34 };
     const x = (i) => m.l + (i * (W - m.l - m.r)) / (datos.length - 1);
     const y = (v) => H - m.b - (v / 1200) * (H - m.t - m.b);
-    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S: costo planificado acumulado de S/ 10.23 en agosto a S/ 1,100 en diciembre"><defs><linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d30040" stop-opacity=".28"/><stop offset="1" stop-color="#d30040" stop-opacity="0"/></linearGradient></defs>`;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S: costo planificado acumulado de S/ 10.23 en agosto a S/ 1,100 en diciembre"><defs><linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a4262c" stop-opacity=".28"/><stop offset="1" stop-color="#a4262c" stop-opacity="0"/></linearGradient></defs>`;
     [0, 300, 600, 900, 1200].forEach((v) => { s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e2e8f0"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#64748b">${v}</text>`; });
     const pts = datos.map((d, i) => `${x(i)},${y(d[1])}`).join(" ");
     s += `<polygon points="${x(0)},${y(0)} ${pts} ${x(4)},${y(0)}" fill="url(#gS)"/>`;
-    s += `<polyline class="draw" points="${pts}" fill="none" stroke="#9c0028" stroke-width="3" stroke-linejoin="round"/>`;
+    s += `<polyline class="draw" points="${pts}" fill="none" stroke="#a4262c" stroke-width="3" stroke-linejoin="round"/>`;
     datos.forEach((d, i) => {
-      s += `<circle cx="${x(i)}" cy="${y(d[1])}" r="5" fill="#fff" stroke="#9c0028" stroke-width="2.5"><title>${d[0]} 2026: S/ ${d[1].toFixed(2)}</title></circle><text x="${x(i)}" y="${H - 12}" text-anchor="middle" font-size="12" fill="#64748b">${d[0]}</text>`;
+      s += `<circle cx="${x(i)}" cy="${y(d[1])}" r="5" fill="#fff" stroke="#a4262c" stroke-width="2.5"><title>${d[0]} 2026: S/ ${d[1].toFixed(2)}</title></circle><text x="${x(i)}" y="${H - 12}" text-anchor="middle" font-size="12" fill="#64748b">${d[0]}</text>`;
     });
     s += `<text x="${x(4) - 8}" y="${y(1100) - 10}" text-anchor="end" font-size="12" font-weight="700" fill="#1e293b">BAC S/ 1,100</text>`;
     $("#curva").innerHTML = s + "</svg>";
@@ -253,9 +253,9 @@
   function evm() {
     const pct = 358.52 / 1100, r = 70, c = 2 * Math.PI * r;
     $("#evm-gauge").innerHTML = `<svg viewBox="0 0 180 180" role="img" aria-label="Valor planificado al 29/10: 33 % del presupuesto">
-      <circle cx="90" cy="90" r="${r}" fill="none" stroke="#f1d5dd" stroke-width="16"/>
-      <circle class="ring" cx="90" cy="90" r="${r}" fill="none" stroke="#9c0028" stroke-width="16" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}" style="--off:${c * (1 - pct)}" transform="rotate(-90 90 90)"/>
-      <text x="90" y="88" text-anchor="middle" font-size="34" font-weight="800" fill="#1e293b" font-family="Montserrat">33%</text>
+      <circle cx="90" cy="90" r="${r}" fill="none" stroke="#ead6d7" stroke-width="16"/>
+      <circle class="ring" cx="90" cy="90" r="${r}" fill="none" stroke="#a4262c" stroke-width="16" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}" style="--off:${c * (1 - pct)}" transform="rotate(-90 90 90)"/>
+      <text x="90" y="88" text-anchor="middle" font-size="34" font-weight="800" fill="#1e293b" font-family="Segoe UI, Inter, sans-serif">33%</text>
       <text x="90" y="112" text-anchor="middle" font-size="12" fill="#64748b">PV / BAC</text></svg>`;
   }
 

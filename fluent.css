@@ -1,0 +1,193 @@
+/* =====================================================================
+   Tema Fluent (Windows): colores mate, acrílico con desenfoque y ruido,
+   bordes rectos. Se carga después de styles.css y lo sobrescribe.
+   ===================================================================== */
+:root {
+  --red: #a4262c;          /* acento mate (guinda UPSJB) */
+  --red-2: #c23a40;
+  --red-3: #6f1a1e;
+  --rose: rgba(164, 38, 44, .08);
+  --rose-2: rgba(164, 38, 44, .16);
+  --ink: #1b1b1f;
+  --ink-2: #3b3b42;
+  --muted: #5c5c66;
+  --line: rgba(0, 0, 0, .09);
+  --soft: rgba(255, 255, 255, .45);
+  --gold: #b88a2c;
+  --ok: #107c41;
+  --ok-soft: rgba(16, 124, 65, .12);
+  --warn: #9a5b00;
+  --warn-soft: rgba(202, 138, 4, .14);
+  --r: 0;
+  --display: "Segoe UI Variable Display", "Segoe UI", "Inter", system-ui, sans-serif;
+  --serif: "Segoe UI Variable Display", "Segoe UI", "Inter", system-ui, sans-serif;
+  --sans: "Segoe UI Variable Text", "Segoe UI", "Inter", system-ui, sans-serif;
+  --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --acrylic: rgba(250, 250, 252, .62);
+  --acrylic-dark: rgba(30, 30, 36, .62);
+  --blur: blur(28px) saturate(1.35);
+  --shadow: 0 2px 4px rgba(0, 0, 0, .06), 0 16px 32px -16px rgba(0, 0, 0, .22);
+  --stroke: 1px solid rgba(255, 255, 255, .55);
+}
+
+/* bordes rectos en todo */
+*, *::before, *::after { border-radius: 0 !important; }
+
+/* ---------- fondo tipo wallpaper mate ---------- */
+body { background: #e9e6e3; color: var(--ink); font-family: var(--sans); letter-spacing: 0; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(60vw 60vh at 8% 12%, #c9a3a0 0%, transparent 60%),
+    radial-gradient(55vw 55vh at 92% 20%, #9fb0bd 0%, transparent 62%),
+    radial-gradient(60vw 60vh at 70% 95%, #c2b49a 0%, transparent 60%),
+    radial-gradient(45vw 45vh at 20% 90%, #a9b7a6 0%, transparent 60%),
+    #e4e0dc;
+}
+body::after { content: ""; position: fixed; inset: 0; z-index: -1; background-image: var(--noise); opacity: .06; pointer-events: none; }
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; letter-spacing: -.01em; }
+.sec-head h2 { font-weight: 600; }
+.sec-head h2 em, .hero h1 em { font-family: var(--display); font-style: normal; font-weight: 600; }
+
+/* mezcla acrílica reutilizable */
+.acr, .nav, .pillar, .objectives, .ba, .req-list li, .member, .side-roles div, .stage, .stage-detail,
+.steps5 div, .metrics div, .kpi, .evm, .panel, .demo, .tbl-wrap, .q, .risks li, .checks li, .lessons li,
+.chart svg, .pan, .gantt, .viewer-body, .hero-card, .hero-status, .deck {
+  background-color: var(--acrylic);
+  background-image: var(--noise);
+  background-blend-mode: soft-light;
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: var(--stroke);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- barra superior y navegación ---------- */
+.progress span { background: var(--red); }
+.utility { background: rgba(111, 26, 30, .88); backdrop-filter: var(--blur); color: #f1dcdc; }
+.nav { background-color: rgba(250, 250, 252, .7); border-width: 0 0 1px; }
+.nav.scrolled { box-shadow: 0 8px 24px -16px rgba(0, 0, 0, .45); }
+.nav-brand b { font-weight: 600; }
+.menu a { font: 500 .9rem var(--sans); color: var(--ink-2); }
+.menu a::after { left: 8px; right: 8px; bottom: 0; height: 3px; }
+.menu a:hover { background: rgba(0, 0, 0, .05); }
+
+/* ---------- botones Fluent ---------- */
+.btn { min-height: 40px; padding: 0 22px; font: 600 .92rem var(--sans); border-width: 1px; }
+.btn:hover { transform: none; }
+.btn-primary, .btn-light { background: var(--red); color: #fff; box-shadow: none; }
+.btn-primary:hover, .btn-light:hover { background: var(--red-3); }
+.btn-outline { color: var(--ink); border-color: rgba(0, 0, 0, .2); background: rgba(255, 255, 255, .5); backdrop-filter: var(--blur); }
+.btn-outline:hover { background: rgba(255, 255, 255, .75); }
+.btn-ghost { background: rgba(255, 255, 255, .6); }
+.chip-btn { min-height: 34px; font: 500 .84rem var(--sans); background: rgba(255, 255, 255, .6); border-color: rgba(0, 0, 0, .12); }
+.chip-btn.solid { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* ---------- hero ---------- */
+.hero { background: none; color: var(--ink); padding: 72px 0 40px; }
+.hero::after, .hero-bg { display: none; }
+.badges span { background: rgba(255, 255, 255, .55); border: 1px solid rgba(0, 0, 0, .08); color: var(--ink-2); font: 600 .76rem var(--sans); backdrop-filter: var(--blur); }
+.hero h1 { font-weight: 600; letter-spacing: -.025em; }
+.hero h1 em { color: var(--red); }
+.hero-lead { color: var(--ink-2); }
+.hero-status { color: var(--ink); }
+.hero-status p { color: var(--muted); }
+.st-bar { background: rgba(0, 0, 0, .08); height: 4px; }
+.st-bar span { background: var(--red); }
+.st-dot { background: var(--ok); animation: none; }
+.hero-card { transform: none; }
+.hero-card:hover { transform: translateY(-3px); }
+.hc-head { background: rgba(255, 255, 255, .5); }
+.dot { width: 12px; height: 2px; background: #8a8a93 !important; }
+.hc-combo { background: var(--red); }
+.hc-parts li { background: rgba(255, 255, 255, .55); }
+.hc-parts i { background: var(--rose-2); }
+.hero-stats { gap: 6px; background: none; }
+.hero-stats div { color: #fff; padding: 20px; background-image: var(--noise); background-blend-mode: soft-light; }
+.hero-stats div:nth-child(1) { background-color: #a4262c; }
+.hero-stats div:nth-child(2) { background-color: #4a5a6a; }
+.hero-stats div:nth-child(3) { background-color: #6b5b45; }
+.hero-stats div:nth-child(4) { background-color: #3f6656; }
+.hero-stats div:nth-child(5) { background-color: #5b4a63; }
+.hero-stats dt { color: rgba(255, 255, 255, .78); }
+.hero-stats dd { font-weight: 600; }
+
+/* ---------- secciones ---------- */
+.section, .section.soft { background: none; }
+.section.dark { background: rgba(24, 24, 30, .78); background-image: var(--noise); background-blend-mode: soft-light; backdrop-filter: var(--blur); }
+.kicker::before { height: 3px; width: 22px; }
+.pillar::before { height: 3px; background: var(--red); }
+.pi-ico { background: var(--red); color: #fff; }
+.objectives { background-color: rgba(255, 255, 255, .5); }
+.ba.bad, .ba.good { background-color: var(--acrylic); }
+.ba.bad { border-left: 4px solid #c2410c; }
+.ba.good { border-left: 4px solid var(--ok); }
+.req-list li:hover { transform: none; background-color: rgba(255, 255, 255, .8); }
+.member:hover, .pillar:hover, .kpi:hover, .stage:hover { transform: translateY(-2px); }
+.member.lead { background-color: rgba(164, 38, 44, .1); }
+.mb-ini { background: var(--red); color: #fff; font-weight: 600; }
+.member .mb-ini { background: #4a5a6a; }
+.member:nth-child(3) .mb-ini { background: #6b5b45; }
+.member:nth-child(4) .mb-ini { background: #3f6656; }
+.member:nth-child(5) .mb-ini { background: #5b4a63; }
+.member.lead .mb-ini { background: var(--red); }
+
+/* ---------- presentación ---------- */
+.deck { background-color: rgba(250, 250, 252, .82); }
+.slide { background: rgba(255, 255, 255, .9) linear-gradient(90deg, var(--red) 0 6px, transparent 6px); }
+.s-cover { background: var(--red) var(--noise); background-blend-mode: soft-light; }
+.s-box { background: rgba(164, 38, 44, .07); border: 1px solid rgba(164, 38, 44, .14); }
+.s-flow span { background: var(--red); }
+.s-team li { background: rgba(0, 0, 0, .03); }
+.deck-ctrl { background: rgba(250, 250, 252, .75); }
+.dk-btn { background: rgba(255, 255, 255, .7); }
+.dk-dots button { height: 4px; width: 16px; }
+.dk-dots button[aria-selected="true"] { width: 32px; }
+
+/* ---------- etapas, planes y tablas ---------- */
+.stage[aria-selected="true"] { box-shadow: inset 0 -3px 0 var(--red), var(--shadow); border-color: rgba(255, 255, 255, .55); }
+.sg-num { background: rgba(0, 0, 0, .06); }
+.stage.now .sg-num { box-shadow: none; }
+.stage-detail li { background: rgba(255, 255, 255, .55); }
+.plan-tabs { border-bottom-color: rgba(0, 0, 0, .1); }
+.plan-tabs button { font: 500 .9rem var(--sans); }
+.plan-tabs button[aria-selected="true"]::after { left: 0; right: 0; bottom: -7px; }
+.tbl thead th { background: rgba(0, 0, 0, .04); font: 600 .74rem var(--sans); }
+.tbl tbody tr:hover td { background: rgba(255, 255, 255, .5); }
+.tbl tr.sub td { background: rgba(0, 0, 0, .03); }
+.tbl tr.total td { background: rgba(164, 38, 44, .1); }
+.steps5 div::before { opacity: .55; font-weight: 600; }
+.metrics b, .kpi em { font-weight: 600; }
+.heat .c1 { background: rgba(63, 102, 86, .22); } .heat .c2 { background: rgba(184, 138, 44, .25); } .heat .c3 { background: rgba(164, 38, 44, .25); }
+.q.hot { background-color: rgba(164, 38, 44, .1); } .q.warm { background-color: rgba(184, 138, 44, .1); }
+.q span { background: rgba(255, 255, 255, .7); }
+
+/* ---------- Gantt ---------- */
+.gt-head { background: rgba(240, 240, 244, .92); }
+.gt-row .gt-name { background: rgba(250, 250, 252, .96); }
+.gt-row:hover, .gt-row:hover .gt-name { background: #f6eeee; }
+.gt-bar.pm { background: var(--red); }
+.gt-bar.dev { background: #4a5a6a; }
+.gt-bar.sumbar { background: #2b2b31; }
+.gt-today::before { background: var(--red); }
+.gt-today { background: var(--red); }
+
+/* ---------- control, demo y visor ---------- */
+.mini-steps li { background: rgba(255, 255, 255, .6); }
+.demo { background-color: rgba(250, 250, 252, .45); }
+.tabs button { font: 500 .88rem var(--sans); background: rgba(255, 255, 255, .6); }
+input, select { min-height: 38px; background: rgba(255, 255, 255, .85); border-color: rgba(0, 0, 0, .14); border-bottom: 2px solid rgba(0, 0, 0, .35); }
+input:focus, select:focus { border-bottom-color: var(--red); box-shadow: none; }
+.combo-item { background: rgba(255, 255, 255, .55); }
+.viewer-tabs button { background: rgba(255, 255, 255, .06); backdrop-filter: var(--blur); }
+.viewer-tabs button[aria-selected="true"] { background: var(--red); }
+.viewer-body { background-color: rgba(250, 250, 252, .9); }
+.viewer-frame { background: rgba(0, 0, 0, .06); }
+.acta-thumbs button { background: rgba(255, 255, 255, .8); }
+
+/* ---------- pie ---------- */
+.footer { background: rgba(111, 26, 30, .9) var(--noise); background-blend-mode: soft-light; backdrop-filter: var(--blur); }
+.to-top { border-color: rgba(255, 255, 255, .4); }
+.lightbox { background: rgba(20, 20, 24, .7); backdrop-filter: blur(18px); }
+.s-logo { align-self: flex-start; width: auto; height: 64px; object-fit: contain; }

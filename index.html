@@ -3,166 +3,544 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Productos Compuestos · Casa Novedades Decor</title>
-<meta name="description" content="Proyecto final de Gestión de Proyectos (UPSJB 2026-II): mejora de la gestión de productos compuestos para optimizar el control de inventarios y ventas de Casa Novedades Decor, con demo interactiva.">
+<title>Productos Compuestos · Casa Novedades Decor · UPSJB</title>
+<meta name="description" content="Portafolio del proyecto final de Gestión de Proyectos (UPSJB 2026-II): mejora de la gestión de productos compuestos de Casa Novedades Decor. Presentación, equipo, etapas, planeación PMBOK 8, cronograma, documentos y demo.">
+<meta name="theme-color" content="#9c0028">
+<link rel="icon" href="assets/img/upsjb.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="progress" aria-hidden="true"><span id="progreso"></span></div>
 
-<header class="topbar">
-  <div class="wrap topbar-in">
-    <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">CN</span><span>Casa Novedades <b>Decor</b></span></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
+<div class="utility">
+  <div class="wrap utility-in">
+    <span>Universidad Privada San Juan Bautista · Facultad de Ingenierías</span>
+    <span class="hide-sm">Ingeniería de Sistemas · Gestión de Proyectos · 2026-II</span>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="nav-brand" href="#inicio" aria-label="Inicio">
+      <img src="assets/img/upsjb.png" alt="" width="36" height="44">
+      <span><b>Productos Compuestos</b><small>Casa Novedades Decor</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu"><span></span><span></span><span class="sr">Menú</span></button>
     <nav id="menu" class="menu" aria-label="Secciones">
-      <a href="#problema">Problema</a>
-      <a href="#solucion">Solución</a>
-      <a href="#demo">Demo</a>
-      <a href="#gestion">Gestión</a>
+      <a href="#proyecto">Proyecto</a>
+      <a href="#presentacion">Presentación</a>
       <a href="#equipo">Equipo</a>
-      <a href="#entregables">Entregables</a>
+      <a href="#etapas">Etapas</a>
+      <a href="#planeacion">Planeación</a>
+      <a href="#demo">Demo</a>
+      <a href="#documentos">Documentos</a>
+      <a href="#cierre">Cierre</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- ============ HERO ============ -->
+<!-- ================= HERO ================= -->
 <section id="inicio" class="hero">
+  <div class="hero-bg" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Proyecto final · Gestión de Proyectos · PMBOK 8</p>
-      <h1>Un combo se vende como uno, <em>pero se descuenta como varios.</em></h1>
-      <p class="lead">Mejora de la gestión de productos compuestos para optimizar el control de inventarios y ventas de <b>Casa Novedades Decor</b>: cada venta de un combo actualiza el stock de todos sus componentes y queda registrada en el Kardex.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#demo">Probar la demo</a>
-        <a class="btn btn-ghost" href="#gestion">Ver la gestión del proyecto</a>
+    <div class="hero-copy">
+      <div class="badges reveal">
+        <span>Proyecto final · LRPD</span><span>PMBOK 8</span><span>Grupo 03 · Tarde</span>
       </div>
-      <dl class="stats">
-        <div><dt>Presupuesto</dt><dd>S/ 1,210</dd></div>
-        <div><dt>Duración</dt><dd>24/08 – 28/12</dd></div>
-        <div><dt>Tareas</dt><dd>49</dd></div>
-        <div><dt>Requisitos</dt><dd>9 RF · 6 RNF</dd></div>
-      </dl>
+      <h1 class="reveal">Mejora de la gestión de <em>productos compuestos</em></h1>
+      <p class="hero-lead reveal">Para optimizar el control de inventarios y ventas de <b>Casa Novedades Decor</b>: cada combo vendido descuenta automáticamente sus componentes y deja rastro en el Kardex.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-light" href="#presentacion">Ver presentación</a>
+        <a class="btn btn-outline" href="#demo">Probar la demo</a>
+      </div>
+      <div class="hero-status reveal" id="estado-proyecto"></div>
     </div>
-    <figure class="combo-figure" aria-label="Ejemplo: un Kit Mesa Navideña está formado por un mantel, cuatro individuales y un centro de mesa">
-      <div class="combo-card combo-main">
-        <span class="tag">Producto compuesto</span>
+    <div class="hero-card reveal" aria-label="Ejemplo de producto compuesto">
+      <div class="hc-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b>ERP · Catálogo</b></div>
+      <div class="hc-combo">
+        <small>Producto compuesto</small>
         <strong>Kit Mesa Navideña</strong>
-        <span class="price">S/ 75.00</span>
+        <span>S/ 75.00</span>
       </div>
-      <div class="combo-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="combo-parts">
-        <div class="combo-card"><span class="qty">1×</span>Mantel navideño</div>
-        <div class="combo-card"><span class="qty">4×</span>Individual bordado</div>
-        <div class="combo-card"><span class="qty">1×</span>Centro de mesa</div>
-      </div>
-      <figcaption>Al vender 1 kit, el sistema descuenta 1 mantel, 4 individuales y 1 centro de mesa.</figcaption>
-    </figure>
+      <ul class="hc-parts">
+        <li><b>1×</b> Mantel navideño <i class="pulse">−1</i></li>
+        <li><b>4×</b> Individual bordado <i class="pulse">−4</i></li>
+        <li><b>1×</b> Centro de mesa <i class="pulse">−1</i></li>
+      </ul>
+      <p class="hc-foot">Venta registrada · Kardex actualizado ✓</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <dl class="hero-stats">
+      <div class="reveal"><dt>Presupuesto</dt><dd>S/ <span class="count" data-to="1210">0</span></dd></div>
+      <div class="reveal"><dt>Tareas en ProjectLibre</dt><dd><span class="count" data-to="49">0</span></dd></div>
+      <div class="reveal"><dt>Elementos de la EDT</dt><dd><span class="count" data-to="46">0</span></dd></div>
+      <div class="reveal"><dt>Requisitos</dt><dd><span class="count" data-to="15">0</span></dd></div>
+      <div class="reveal"><dt>Duración</dt><dd><span class="count" data-to="18">0</span> semanas</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ============ PROBLEMA ============ -->
-<section id="problema" class="section">
+<!-- ================= PROYECTO ================= -->
+<section id="proyecto" class="section">
   <div class="wrap">
-    <p class="eyebrow">El problema</p>
-    <h2>El inventario no cuadraba con lo que había en almacén</h2>
-    <p class="section-lead">Casa Novedades Decor vende artículos sueltos y también combos armados con varios de ellos. El ERP no tenía un mecanismo para relacionar un combo con sus componentes.</p>
-    <div class="cards-3">
-      <article class="card">
-        <h3>Stock descuadrado</h3>
-        <p>Al vender un combo, las cantidades de sus componentes no se actualizaban bien y el inventario registrado dejaba de coincidir con el físico.</p>
-      </article>
-      <article class="card">
-        <h3>Sin trazabilidad</h3>
-        <p>No había un procedimiento estándar para registrar, modificar, desarmar ni consultar la composición de los combos ni sus movimientos.</p>
-      </article>
-      <article class="card">
-        <h3>Errores en la venta</h3>
-        <p>Sin conocer la disponibilidad real de cada componente, se podía ofrecer un combo que en realidad no se podía armar.</p>
-      </article>
-    </div>
-    <div class="compare">
-      <div class="compare-col bad">
-        <h3>Antes</h3>
-        <p>Venta de 2 «Kit Mesa Navideña»</p>
-        <ul>
-          <li>Se registra la salida de 2 kits.</li>
-          <li>Mantel, individuales y centros siguen con el mismo stock.</li>
-          <li>El sistema muestra 14 manteles; en almacén hay 12.</li>
-        </ul>
-      </div>
-      <div class="compare-col good">
-        <h3>Con la mejora</h3>
-        <p>Venta de 2 «Kit Mesa Navideña»</p>
-        <ul>
-          <li>Se valida que alcancen los componentes.</li>
-          <li>Se descuentan 2 manteles, 8 individuales y 2 centros.</li>
-          <li>Cada salida queda en el Kardex con usuario y fecha.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    <header class="sec-head reveal">
+      <p class="kicker">01 · El proyecto</p>
+      <h2>Un combo se vende como uno, <em>pero se descuenta como varios</em></h2>
+      <p>Casa Novedades Decor vende artículos de decoración sueltos y también combos armados con varios de ellos. Su ERP no relacionaba cada combo con sus componentes, y el inventario dejaba de coincidir con el almacén.</p>
+    </header>
 
-<!-- ============ SOLUCIÓN ============ -->
-<section id="solucion" class="section alt">
-  <div class="wrap">
-    <p class="eyebrow">La solución</p>
-    <h2>Adecuar el ERP existente para gestionar combos</h2>
-    <p class="section-lead"><b>Objetivo general:</b> optimizar la gestión de productos compuestos para mejorar el control y la trazabilidad del inventario, así como la eficiencia del proceso de ventas.</p>
-    <ol class="flow">
-      <li><span>1</span><b>Registrar</b> el combo y su receta (BOM)</li>
-      <li><span>2</span><b>Validar</b> la disponibilidad de cada componente</li>
-      <li><span>3</span><b>Vender</b> el combo como una sola unidad</li>
-      <li><span>4</span><b>Descontar</b> automáticamente cada componente</li>
-      <li><span>5</span><b>Registrar</b> el movimiento en el Kardex</li>
-    </ol>
-    <div class="req-grid">
+    <div class="pillars">
+      <article class="pillar reveal">
+        <span class="pi-ico" aria-hidden="true">!</span>
+        <h3>Problema</h3>
+        <p>Al vender un combo no se actualizaba el stock de sus componentes. Sin procedimientos para registrar, modificar o desarmar combos, no había trazabilidad y aparecían diferencias con el inventario físico.</p>
+      </article>
+      <article class="pillar reveal">
+        <span class="pi-ico" aria-hidden="true">◎</span>
+        <h3>Objetivo general</h3>
+        <p>Optimizar la gestión de productos compuestos para mejorar el control y la trazabilidad del inventario, así como la eficiencia del proceso de ventas.</p>
+      </article>
+      <article class="pillar reveal">
+        <span class="pi-ico" aria-hidden="true">▣</span>
+        <h3>Alcance</h3>
+        <p>Adecuar el ERP existente: registrar la composición, consultarla y editarla, procesar ventas y mantener al día el inventario y el Kardex, con pruebas, documentación y capacitación.</p>
+      </article>
+    </div>
+
+    <div class="objectives reveal">
+      <h3>Objetivos específicos</h3>
+      <ol>
+        <li>Analizar la gestión actual de productos compuestos para identificar deficiencias en el control de inventarios y ventas.</li>
+        <li>Diseñar un flujo estandarizado para registrar, asociar, consultar, modificar y descomponer productos compuestos.</li>
+        <li>Establecer indicadores que evalúen la trazabilidad, disponibilidad y confiabilidad del inventario tras la mejora.</li>
+      </ol>
+    </div>
+
+    <div class="before-after reveal">
+      <div class="ba bad">
+        <span class="ba-tag">Antes</span>
+        <p>Se venden 2 «Kit Mesa Navideña»: el sistema registra 2 kits, pero manteles, individuales y centros de mesa mantienen su stock. El sistema dice 14 manteles; el almacén tiene 12.</p>
+      </div>
+      <div class="ba-arrow" aria-hidden="true">→</div>
+      <div class="ba good">
+        <span class="ba-tag">Con la mejora</span>
+        <p>Se valida que alcancen los componentes, se descuentan 2 manteles, 8 individuales y 2 centros, y cada salida queda en el Kardex con usuario y fecha.</p>
+      </div>
+    </div>
+
+    <div class="req reveal">
       <div>
         <h3>Requerimientos funcionales</h3>
-        <table class="tbl">
-          <tbody>
-            <tr><th>RF-001</th><td>Registrar producto compuesto</td></tr>
-            <tr><th>RF-002</th><td>Asociar productos individuales y cantidades</td></tr>
-            <tr><th>RF-003</th><td>Consultar la composición de cada combo</td></tr>
-            <tr><th>RF-004</th><td>Editar la composición</td></tr>
-            <tr><th>RF-005</th><td>Eliminar o desactivar un combo</td></tr>
-            <tr><th>RF-006</th><td>Generar reporte de productos compuestos</td></tr>
-            <tr><th>RF-007</th><td>Registrar la venta de un combo completo</td></tr>
-            <tr><th>RF-008</th><td>Validar la disponibilidad de los componentes</td></tr>
-            <tr><th>RF-009</th><td>Actualizar automáticamente el inventario</td></tr>
-          </tbody>
-        </table>
+        <ul class="req-list">
+          <li><b>RF-001</b>Registrar producto compuesto</li>
+          <li><b>RF-002</b>Asociar productos individuales y cantidades</li>
+          <li><b>RF-003</b>Consultar la composición</li>
+          <li><b>RF-004</b>Editar la composición</li>
+          <li><b>RF-005</b>Eliminar o desactivar un combo</li>
+          <li><b>RF-006</b>Reporte de productos compuestos</li>
+          <li><b>RF-007</b>Registrar la venta de un combo</li>
+          <li><b>RF-008</b>Validar la disponibilidad de componentes</li>
+          <li><b>RF-009</b>Actualizar automáticamente el inventario</li>
+        </ul>
       </div>
       <div>
         <h3>Requerimientos no funcionales</h3>
-        <table class="tbl">
-          <tbody>
-            <tr><th>RNF-001</th><td>Usabilidad: interfaz fácil e intuitiva</td></tr>
-            <tr><th>RNF-002</th><td>Seguridad: autenticación de acceso</td></tr>
-            <tr><th>RNF-003</th><td>Control de acceso: permisos según rol</td></tr>
-            <tr><th>RNF-004</th><td>Integridad: inventario actualizado correctamente</td></tr>
-            <tr><th>RNF-005</th><td>Trazabilidad: registro de operaciones</td></tr>
-            <tr><th>RNF-006</th><td>Compatibilidad con el ERP existente</td></tr>
-          </tbody>
-        </table>
-        <p class="note">Cada requisito se construye en un paquete de la EDT y se valida con las pruebas de balance del Kardex (matriz de trazabilidad, Anexo 2 del informe).</p>
+        <ul class="req-list nf">
+          <li><b>RNF-001</b>Usabilidad: interfaz fácil e intuitiva</li>
+          <li><b>RNF-002</b>Seguridad: autenticación de acceso</li>
+          <li><b>RNF-003</b>Control de acceso por rol</li>
+          <li><b>RNF-004</b>Integridad del inventario</li>
+          <li><b>RNF-005</b>Trazabilidad de operaciones</li>
+          <li><b>RNF-006</b>Compatibilidad con el ERP existente</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ DEMO ============ -->
+<!-- ================= PRESENTACIÓN ================= -->
+<section id="presentacion" class="section dark">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="kicker">02 · Presentación</p>
+      <h2>El proyecto en diez diapositivas</h2>
+      <p>Usa las flechas del teclado, los botones o desliza en el celular. Puedes verla a pantalla completa.</p>
+    </header>
+    <div class="deck reveal" id="deck" tabindex="0" aria-roledescription="carrusel" aria-label="Presentación del proyecto">
+      <div class="deck-stage" id="deck-stage">
+        <article class="slide s-cover">
+          <img src="assets/img/upsjb-blanco.png" alt="" class="s-logo">
+          <p class="s-kicker">Gestión de Proyectos · Proyecto final</p>
+          <h3>Mejora de la gestión de productos compuestos para optimizar el control de inventarios y ventas de Casa Novedades Decor</h3>
+          <p class="s-meta">Grupo 03 · Turno Tarde · Docente: Heberht Alvan Chavez Saravia · Chincha, 2026-II</p>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">El problema</p>
+          <h3>El inventario de combos no cuadraba</h3>
+          <div class="s-cols">
+            <div class="s-box"><b>Stock descuadrado</b><span>La venta de un combo no actualizaba sus componentes.</span></div>
+            <div class="s-box"><b>Sin trazabilidad</b><span>No había un procedimiento para registrar ni desarmar combos.</span></div>
+            <div class="s-box"><b>Errores en la venta</b><span>Se ofrecían combos que no se podían armar.</span></div>
+          </div>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Objetivos</p>
+          <h3>Control y trazabilidad del inventario</h3>
+          <ol class="s-list">
+            <li>Analizar la gestión actual de productos compuestos.</li>
+            <li>Diseñar un flujo estandarizado para registrar, asociar, consultar, modificar y descomponer combos.</li>
+            <li>Establecer indicadores de trazabilidad, disponibilidad y confiabilidad.</li>
+          </ol>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Alcance</p>
+          <h3>9 requerimientos funcionales y 6 no funcionales</h3>
+          <div class="s-flow"><span>Registrar combo</span><span>Validar stock</span><span>Vender</span><span>Descontar componentes</span><span>Kardex</span></div>
+          <p class="s-note">Se adecua el ERP existente sin afectar sus funciones (RNF-006).</p>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">EDT / WBS</p>
+          <h3>46 elementos en dos componentes</h3>
+          <div class="s-cols two">
+            <div class="s-box"><b>1. Gestión del Proyecto</b><span>Inicio · Planificación · Ejecución · Monitoreo y control · Cierre</span></div>
+            <div class="s-box"><b>2. Desarrollo e Implementación ERP</b><span>Análisis · Diseño · Construcción · Pruebas y QA · Despliegue</span></div>
+          </div>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Cronograma</p>
+          <h3>24/08/2026 → 28/12/2026</h3>
+          <div class="s-big"><div><b>49</b><span>tareas</span></div><div><b>2</b><span>hitos</span></div><div><b>18</b><span>semanas</span></div></div>
+          <p class="s-note">Hitos: acta firmada (08/09) y cierre del proyecto (28/12). Dependencias fin-comienzo en ProjectLibre.</p>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Costos</p>
+          <h3>Presupuesto total: S/ 1,210.00</h3>
+          <div class="s-bars">
+            <div style="--w:45%"><span>Adecuación del ERP</span><b>S/ 500</b></div>
+            <div style="--w:18%"><span>Análisis y diseño</span><b>S/ 200</b></div>
+            <div style="--w:14%"><span>Gestión del proyecto</span><b>S/ 150</b></div>
+            <div style="--w:14%"><span>Pruebas y despliegue</span><b>S/ 150</b></div>
+            <div style="--w:9%"><span>Infraestructura</span><b>S/ 100</b></div>
+            <div style="--w:10%" class="res"><span>Reserva</span><b>S/ 110</b></div>
+          </div>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Riesgos</p>
+          <h3>Los tres de mayor exposición</h3>
+          <div class="s-cols">
+            <div class="s-box"><b>R-01 · 16</b><span>Inventario físico distinto del registrado → conteo y conciliación.</span></div>
+            <div class="s-box"><b>R-02 · 15</b><span>Recetas incorrectas → validar cada BOM con almacén.</span></div>
+            <div class="s-box"><b>R-03 · 15</b><span>Fallos con el ERP o el Kardex → pruebas en copia de la BD.</span></div>
+          </div>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Equipo</p>
+          <h3>Roles del proyecto</h3>
+          <ul class="s-team">
+            <li><b>Torres Espinoza, Omar Marlon</b>Director del proyecto</li>
+            <li><b>Cueva Macedo, Junior Alberto</b>Administrador del ERP</li>
+            <li><b>Arteaga Suarez, Herik Aymar</b>Analista de requerimientos</li>
+            <li><b>Mondalgo Diaz, Jose Alexander</b>Desarrollador</li>
+            <li><b>Mosquera Garcia, Anthony Eduardo</b>Calidad y documentación</li>
+          </ul>
+        </article>
+        <article class="slide s-cover">
+          <p class="s-kicker">Conclusión</p>
+          <h3>Del inventario descuadrado a un proyecto con alcance, EDT, cronograma y presupuesto verificables</h3>
+          <p class="s-meta">El valor principal: la exactitud del descuento de componentes. ¡Gracias!</p>
+        </article>
+      </div>
+      <div class="deck-ctrl">
+        <button class="dk-btn" id="dk-prev" aria-label="Diapositiva anterior">‹</button>
+        <div class="dk-dots" id="dk-dots" role="tablist" aria-label="Diapositivas"></div>
+        <span class="dk-count" id="dk-count">1 / 10</span>
+        <button class="dk-btn" id="dk-next" aria-label="Diapositiva siguiente">›</button>
+        <button class="dk-btn dk-full" id="dk-full" aria-label="Pantalla completa">⤢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EQUIPO ================= -->
+<section id="equipo" class="section">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="kicker">03 · Equipo</p>
+      <h2>Quiénes somos y qué hace cada uno</h2>
+      <p>Estudiantes del IX ciclo de Ingeniería de Sistemas, organizados según el plan de gestión de recursos humanos.</p>
+    </header>
+    <div class="team">
+      <article class="member lead reveal">
+        <span class="mb-ini">OT</span>
+        <div>
+          <p class="mb-role">Director del proyecto</p>
+          <h3>Torres Espinoza, Omar Marlon</h3>
+          <p>Planificación, seguimiento, riesgos, comunicaciones y cierre. Aprueba los paquetes de trabajo.</p>
+        </div>
+      </article>
+      <article class="member reveal"><span class="mb-ini">JC</span><div><p class="mb-role">Administrador del ERP</p><h3>Cueva Macedo, Junior Alberto</h3><p>Acceso, integración, seguridad y despliegue del ERP.</p></div></article>
+      <article class="member reveal"><span class="mb-ini">HA</span><div><p class="mb-role">Analista de requerimientos</p><h3>Arteaga Suarez, Herik Aymar</h3><p>Levantamiento AS-IS, flujo TO-BE, reglas BOM e historias de usuario.</p></div></article>
+      <article class="member reveal"><span class="mb-ini">JM</span><div><p class="mb-role">Desarrollador</p><h3>Mondalgo Diaz, Jose Alexander</h3><p>Modelo de despiece y Kardex, módulos de catálogo y almacén.</p></div></article>
+      <article class="member reveal"><span class="mb-ini">AM</span><div><p class="mb-role">Calidad y documentación</p><h3>Mosquera Garcia, Anthony Eduardo</h3><p>Casos de prueba, registro de errores, manual y capacitación.</p></div></article>
+    </div>
+    <div class="side-roles reveal">
+      <div><b>Docente</b><span>Heberht Alvan Chavez Saravia</span></div>
+      <div><b>Patrocinador</b><span>Representante de Casa Novedades Decor</span></div>
+      <div><b>Usuarios clave</b><span>Almacén y ventas de la empresa</span></div>
+    </div>
+    <details class="raci reveal">
+      <summary>Ver matriz RACI</summary>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Paquete de trabajo</th><th>Director</th><th>Analista</th><th>Desarrolladores</th><th>QA / doc.</th><th>Patrocinador</th></tr></thead>
+          <tbody>
+            <tr><td>Acta de constitución</td><td>R/A</td><td>C</td><td>I</td><td>I</td><td>A</td></tr>
+            <tr><td>Requerimientos y reglas BOM</td><td>A</td><td>R</td><td>C</td><td>C</td><td>I</td></tr>
+            <tr><td>Diseño de BD y arquitectura</td><td>A</td><td>C</td><td>R</td><td>I</td><td>I</td></tr>
+            <tr><td>Construcción del ERP</td><td>A</td><td>C</td><td>R</td><td>C</td><td>I</td></tr>
+            <tr><td>Pruebas y corrección</td><td>A</td><td>C</td><td>R</td><td>R</td><td>I</td></tr>
+            <tr><td>Despliegue y capacitación</td><td>A</td><td>I</td><td>R</td><td>R</td><td>C</td></tr>
+            <tr><td>Aceptación y cierre</td><td>R</td><td>I</td><td>I</td><td>C</td><td>A</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">R: responsable · A: aprueba · C: consultado · I: informado.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ================= ETAPAS ================= -->
+<section id="etapas" class="section soft">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="kicker">04 · Etapas</p>
+      <h2>Ciclo de vida del proyecto</h2>
+      <p>El estado de cada etapa se calcula con la fecha de hoy frente a la línea base. Toca una etapa para ver sus entregables.</p>
+    </header>
+    <div class="stages reveal" id="stages" role="tablist" aria-label="Etapas"></div>
+    <div class="stage-detail reveal" id="stage-detail" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ================= PLANEACIÓN ================= -->
+<section id="planeacion" class="section">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="kicker">05 · Planeación</p>
+      <h2>Los planes del proyecto</h2>
+      <p>Cada plan sigue los dominios de desempeño del PMBOK 8: alcance, cronograma, finanzas, recursos, riesgos e interesados.</p>
+    </header>
+    <div class="plan-tabs reveal" role="tablist" aria-label="Planes">
+      <button role="tab" aria-selected="true" data-p="p-crono">Cronograma</button>
+      <button role="tab" aria-selected="false" data-p="p-edt">EDT</button>
+      <button role="tab" aria-selected="false" data-p="p-alcance">Alcance</button>
+      <button role="tab" aria-selected="false" data-p="p-costos">Costos</button>
+      <button role="tab" aria-selected="false" data-p="p-calidad">Calidad</button>
+      <button role="tab" aria-selected="false" data-p="p-com">Comunicaciones</button>
+      <button role="tab" aria-selected="false" data-p="p-riesgos">Riesgos</button>
+      <button role="tab" aria-selected="false" data-p="p-interesados">Interesados</button>
+      <button role="tab" aria-selected="false" data-p="p-adq">Adquisiciones</button>
+    </div>
+
+    <div class="plan" id="p-crono" role="tabpanel">
+      <div class="plan-head">
+        <div><h3>Cronograma interactivo</h3><p>Las 49 tareas reales de ProjectLibre. Pasa el cursor por una barra para ver sus fechas y dependencias; contrae o expande cada fase.</p></div>
+        <div class="gantt-tools">
+          <button class="chip-btn" id="g-expand">Expandir todo</button>
+          <button class="chip-btn" id="g-collapse">Solo fases</button>
+        </div>
+      </div>
+      <div class="gantt" id="gantt"></div>
+      <div class="legend"><span class="lg pm"></span>Gestión del proyecto <span class="lg dev"></span>Desarrollo ERP <span class="lg ms"></span>Hito <span class="lg today"></span>Hoy</div>
+    </div>
+
+    <div class="plan" id="p-edt" role="tabpanel" hidden>
+      <div class="plan-head"><div><h3>Estructura de Desglose del Trabajo</h3><p>46 elementos en WBS Schedule Pro. Usa el zoom o abre la vista completa.</p></div>
+        <div class="gantt-tools"><button class="chip-btn" data-zoom="-1" data-target="edt-img">−</button><button class="chip-btn" data-zoom="1" data-target="edt-img">+</button><button class="chip-btn" data-lightbox="assets/img/edt.png">Pantalla completa</button></div></div>
+      <div class="pan" id="edt-pan"><img id="edt-img" src="assets/img/edt.png" alt="EDT del proyecto: Sistema ERP – Transformación y Stock" loading="lazy"></div>
+    </div>
+
+    <div class="plan" id="p-alcance" role="tabpanel" hidden>
+      <h3>Plan de gestión del alcance</h3>
+      <div class="steps5">
+        <div><b>Recopilar</b><span>Entrevistas con usuarios sobre inventario y ventas.</span><i>Lista de requerimientos</i></div>
+        <div><b>Definir</b><span>Funciones incluidas y exclusiones del módulo.</span><i>Acta y alcance</i></div>
+        <div><b>Desglosar</b><span>Entregables y tareas por bloques de trabajo.</span><i>EDT / WBS</i></div>
+        <div><b>Validar</b><span>Funciones y comportamiento del inventario y Kardex.</span><i>Pruebas y conformidad</i></div>
+        <div><b>Controlar</b><span>Evaluar todo cambio antes de modificar entregables.</span><i>Registro de cambios</i></div>
+      </div>
+      <h4>Matriz de trazabilidad</h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Requerimiento</th><th>Paquete de la EDT</th><th>Prueba que lo valida</th></tr></thead>
+        <tbody>
+          <tr><td>RF-001 a RF-005</td><td>2.3.1 Módulo Catálogo Padre e Hijo</td><td>2.4.1 Balance Kardex y usabilidad</td></tr>
+          <tr><td>RF-007, RF-008</td><td>2.3.2 Motor Débito Compuesto y Crédito Simple</td><td>2.4.1 Balance Kardex y usabilidad</td></tr>
+          <tr><td>RF-009, RNF-004, RNF-005</td><td>2.3.3 Actualización Automática de Kardex</td><td>2.4.1 Balance Kardex</td></tr>
+          <tr><td>RF-006</td><td>2.3.4 Módulo Operativo de Almacén</td><td>2.4.1 Usabilidad</td></tr>
+          <tr><td>RNF-001</td><td>2.2.3 Diseño de Interfaces UI/UX</td><td>2.4.1 Usabilidad</td></tr>
+          <tr><td>RNF-002, RNF-003, RNF-006</td><td>2.2.2 Arquitectura ACID / 2.5.1 Despliegue</td><td>2.4.2 Corrección y despliegue</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="plan" id="p-costos" role="tabpanel" hidden>
+      <div class="cols2">
+        <div>
+          <h3>Presupuesto por componente de la EDT</h3>
+          <div class="tbl-wrap"><table class="tbl">
+            <thead><tr><th>Partida</th><th>Periodo</th><th class="num">Monto</th></tr></thead>
+            <tbody>
+              <tr><td>Gestión del proyecto</td><td>24/08 – 23/12</td><td class="num">S/ 150.00</td></tr>
+              <tr><td>Análisis de requisitos y diseño</td><td>15/09 – 26/10</td><td class="num">S/ 200.00</td></tr>
+              <tr><td>Adecuación y desarrollo del ERP</td><td>27/10 – 23/11</td><td class="num">S/ 500.00</td></tr>
+              <tr><td>Pruebas, despliegue y capacitación</td><td>24/11 – 21/12</td><td class="num">S/ 150.00</td></tr>
+              <tr><td>Infraestructura y licencias</td><td>08/12 – 14/12</td><td class="num">S/ 100.00</td></tr>
+              <tr class="sub"><td colspan="2">Línea base de costos</td><td class="num">S/ 1,100.00</td></tr>
+              <tr><td colspan="2">Reserva para riesgos y cambios</td><td class="num">S/ 110.00</td></tr>
+              <tr class="total"><td colspan="2">Presupuesto total</td><td class="num">S/ 1,210.00</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div>
+          <h3>Línea base acumulada (curva S)</h3>
+          <div id="curva" class="chart"></div>
+          <p class="note">Estimación análoga y de abajo hacia arriba. Variaciones de costo o cronograma mayores al 10 % se informan al patrocinador; mayores al 15 %, generan una solicitud de cambio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan" id="p-calidad" role="tabpanel" hidden>
+      <h3>Plan de calidad</h3>
+      <p class="plan-p">Revisiones de entregables, pruebas funcionales por requerimiento y pruebas de balance del Kardex: tras cada venta de un combo, el stock de cada componente debe coincidir con el cálculo esperado.</p>
+      <div class="metrics">
+        <div><b>100 %</b><span>Exactitud del descuento de componentes</span></div>
+        <div><b>≥ 98 %</b><span>Inventario físico vs. sistema</span></div>
+        <div><b>100 %</b><span>Requerimientos con prueba aprobada</span></div>
+        <div><b>0</b><span>Errores críticos al desplegar</span></div>
+        <div><b>≤ 1 min</b><span>Registrar una venta de combo</span></div>
+        <div><b>100 %</b><span>Operaciones con usuario y fecha</span></div>
+      </div>
+    </div>
+
+    <div class="plan" id="p-com" role="tabpanel" hidden>
+      <h3>Matriz de comunicaciones</h3>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Comunicación</th><th>Dirigida a</th><th>Frecuencia</th><th>Medio</th><th>Responsable</th></tr></thead>
+        <tbody>
+          <tr><td>Reunión de coordinación</td><td>Equipo</td><td>Semanal</td><td>Google Meet / presencial</td><td>Director</td></tr>
+          <tr><td>Informe de avance (SPI, CPI, riesgos)</td><td>Patrocinador</td><td>Quincenal</td><td>Correo con PDF</td><td>Director</td></tr>
+          <tr><td>Validación de entregables</td><td>Patrocinador y usuarios clave</td><td>Al cerrar cada fase</td><td>Reunión y acta</td><td>Analista</td></tr>
+          <tr><td>Coordinación diaria</td><td>Equipo</td><td>Diaria</td><td>WhatsApp del equipo</td><td>Todos</td></tr>
+          <tr><td>Solicitudes de cambio</td><td>Patrocinador</td><td>Cuando ocurra</td><td>Formato de cambio</td><td>Director</td></tr>
+          <tr><td>Revisión académica</td><td>Docente</td><td>Calendario del curso</td><td>Aula virtual</td><td>Director</td></tr>
+          <tr><td>Capacitación y manual</td><td>Almacén y ventas</td><td>Al desplegar</td><td>Taller y PDF</td><td>QA / doc.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="plan" id="p-riesgos" role="tabpanel" hidden>
+      <div class="cols2">
+        <div>
+          <h3>Matriz de probabilidad e impacto</h3>
+          <div class="heat" id="heat" role="img" aria-label="Matriz de riesgos: R-01 exposición 16; R-02 y R-03, 15; R-06, 12; R-04 y R-05, 9"></div>
+          <p class="note">Filas: probabilidad · Columnas: impacto · Exposición = P × I.</p>
+        </div>
+        <div>
+          <h3>Registro de riesgos</h3>
+          <ul class="risks">
+            <li class="hi"><b>R-01 · 16</b>Inventario físico distinto del registrado.<i>Mitigar: conteo y conciliación antes de migrar.</i></li>
+            <li class="hi"><b>R-02 · 15</b>Reglas de composición o cantidades incorrectas.<i>Mitigar: validar cada receta BOM con almacén.</i></li>
+            <li class="hi"><b>R-03 · 15</b>Fallos de integración con el ERP o el Kardex.<i>Mitigar: pruebas en copia de la BD y respaldo.</i></li>
+            <li class="md"><b>R-06 · 12</b>Retrasos académicos o técnicos del equipo.<i>Aceptar: reserva de S/ 110 y reasignación.</i></li>
+            <li class="md"><b>R-04 · 9</b>Cambios en los requerimientos.<i>Evitar: control de cambios con el patrocinador.</i></li>
+            <li class="md"><b>R-05 · 9</b>Poca disponibilidad de los usuarios.<i>Mitigar: sesiones agendadas por fase.</i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan" id="p-interesados" role="tabpanel" hidden>
+      <div class="cols2">
+        <div>
+          <h3>Matriz poder–interés</h3>
+          <div class="quad">
+            <div class="q"><b>Mantener satisfecho</b><span>Docente revisor</span></div>
+            <div class="q hot"><b>Gestionar de cerca</b><span>Patrocinador</span><span>Responsable del ERP</span></div>
+            <div class="q"><b>Monitorear</b></div>
+            <div class="q warm"><b>Mantener informado</b><span>Almacén</span><span>Ventas</span><span>Equipo</span></div>
+            <span class="ax ax-y">Poder</span><span class="ax ax-x">Interés</span>
+          </div>
+        </div>
+        <div>
+          <h3>Estrategias</h3>
+          <ul class="plain">
+            <li><b>Patrocinador:</b> aprueba alcance, cambios y cierre.</li>
+            <li><b>Almacén:</b> valida recetas, stock y Kardex.</li>
+            <li><b>Ventas:</b> valida la venta de combos.</li>
+            <li><b>Responsable del ERP:</b> integración y despliegue.</li>
+            <li><b>Docente:</b> revisa los entregables académicos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan" id="p-adq" role="tabpanel" hidden>
+      <h3>Plan de adquisiciones</h3>
+      <p class="plan-p">El proyecto aprovecha el ERP existente, por lo que las adquisiciones son mínimas: solo la partida de infraestructura y licencias (S/ 100.00) para el alojamiento o la ampliación del servidor y las copias de seguridad durante el despliegue (paquete 2.5.1).</p>
+      <div class="steps5 three">
+        <div><b>Contrato</b><span>A precio fijo.</span></div>
+        <div><b>Selección</b><span>Al menos dos cotizaciones: precio, soporte y compatibilidad con el ERP.</span></div>
+        <div><b>Aprobación</b><span>La compra la aprueba el patrocinador; si ya existe la infraestructura, la partida pasa a la reserva.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTROL ================= -->
+<section id="control" class="section soft">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="kicker">06 · Seguimiento y control</p>
+      <h2>Medir con valor ganado, no solo con porcentajes</h2>
+    </header>
+    <div class="kpis">
+      <div class="kpi reveal"><b>SPI</b><span>EV / PV</span><em>≥ 0.95</em><small>Semanal</small></div>
+      <div class="kpi reveal"><b>CPI</b><span>EV / AC</span><em>≥ 0.95</em><small>Semanal</small></div>
+      <div class="kpi reveal"><b>Exactitud</b><span>Coincidencias / conteos</span><em>≥ 98 %</em><small>Pruebas y despliegue</small></div>
+      <div class="kpi reveal"><b>Requisitos</b><span>RF y RNF aprobados / 15</span><em>100 %</em><small>Por fase</small></div>
+      <div class="kpi reveal"><b>Cambios</b><span>Resueltos en ≤ 3 días</span><em>100 %</em><small>Quincenal</small></div>
+      <div class="kpi reveal"><b>Avance</b><span>Terminadas / planificadas</span><em>Línea base</em><small>Semanal</small></div>
+    </div>
+    <div class="evm reveal">
+      <div class="evm-gauge" id="evm-gauge"></div>
+      <div>
+        <h3>Corte al 29/10/2026</h3>
+        <p>Inicio, planificación, análisis y diseño concluidos; en curso la construcción del módulo de catálogo padre e hijo. Valor planificado acumulado: <b>S/ 358.52</b> de un BAC de <b>S/ 1,100.00</b>.</p>
+        <h4>Gestión de cambios</h4>
+        <ol class="mini-steps">
+          <li>Registro de la solicitud</li><li>Análisis de impacto</li><li>Decisión del patrocinador</li><li>Actualización de EDT, cronograma y presupuesto</li><li>Verificación y cierre</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO ================= -->
 <section id="demo" class="section">
   <div class="wrap">
-    <p class="eyebrow">Demo interactiva</p>
-    <h2>Pruébalo: vende un combo y mira cómo se mueve el inventario</h2>
-    <p class="section-lead">Simulación del módulo propuesto. Los datos son de ejemplo y se guardan solo en tu navegador.</p>
+    <header class="sec-head reveal">
+      <p class="kicker">07 · Demo del producto</p>
+      <h2>Vende un combo y mira cómo se mueve el inventario</h2>
+      <p>Simulación del módulo propuesto. Los datos son de ejemplo y se guardan solo en tu navegador.</p>
+    </header>
 
-    <div class="demo">
+    <div class="demo reveal">
       <div class="demo-bar">
         <label class="role">Usuario
           <select id="rol">
@@ -175,10 +553,9 @@
           <button role="tab" aria-selected="false" aria-controls="tab-combos" id="t-combos">Combos</button>
           <button role="tab" aria-selected="false" aria-controls="tab-inv" id="t-inv">Inventario y Kardex</button>
         </div>
-        <button class="btn btn-small btn-ghost" id="reset">Reiniciar datos</button>
+        <button class="chip-btn" id="reset">Reiniciar datos</button>
       </div>
 
-      <!-- Venta -->
       <div class="tab-panel" id="tab-venta" role="tabpanel" aria-labelledby="t-venta">
         <div class="venta-grid">
           <form id="form-venta" class="panel">
@@ -187,22 +564,21 @@
             <label>Cantidad<input id="v-cant" type="number" min="1" value="1"></label>
             <div class="row-btns">
               <button class="btn btn-primary" id="v-vender" type="submit">Registrar venta</button>
-              <button class="btn btn-ghost" id="v-devolver" type="button" title="Devolución: reingresa los componentes">Devolución</button>
+              <button class="btn btn-ghost" id="v-devolver" type="button">Devolución</button>
             </div>
             <p id="v-msg" class="msg" role="status" aria-live="polite"></p>
           </form>
           <div class="panel">
             <h3>Validación de componentes <small>RF-008</small></h3>
-            <table class="tbl tbl-demo">
+            <div class="tbl-wrap"><table class="tbl">
               <thead><tr><th>Componente</th><th>Necesita</th><th>Stock</th><th>Queda</th><th></th></tr></thead>
               <tbody id="v-check"></tbody>
-            </table>
+            </table></div>
             <p id="v-max" class="note"></p>
           </div>
         </div>
       </div>
 
-      <!-- Combos -->
       <div class="tab-panel" id="tab-combos" role="tabpanel" aria-labelledby="t-combos" hidden>
         <div class="venta-grid">
           <div class="panel">
@@ -217,7 +593,7 @@
             <fieldset>
               <legend>Componentes y cantidades</legend>
               <div id="c-items"></div>
-              <button type="button" class="btn btn-small btn-ghost" id="c-add">+ Agregar componente</button>
+              <button type="button" class="chip-btn" id="c-add">+ Agregar componente</button>
             </fieldset>
             <div class="row-btns">
               <button class="btn btn-primary" type="submit" id="c-guardar">Guardar combo</button>
@@ -228,216 +604,100 @@
         </div>
       </div>
 
-      <!-- Inventario -->
       <div class="tab-panel" id="tab-inv" role="tabpanel" aria-labelledby="t-inv" hidden>
         <div class="panel">
           <h3>Stock de componentes <small>RNF-004</small></h3>
-          <table class="tbl tbl-demo">
+          <div class="tbl-wrap"><table class="tbl">
             <thead><tr><th>Código</th><th>Componente</th><th>Stock</th><th>Precio</th><th>Usado en</th></tr></thead>
             <tbody id="i-stock"></tbody>
-          </table>
+          </table></div>
         </div>
         <div class="panel">
           <h3>Reporte de combos <small>RF-006</small></h3>
-          <table class="tbl tbl-demo">
-            <thead><tr><th>Combo</th><th>Estado</th><th>Componentes</th><th>Se pueden armar</th><th>Componente que limita</th></tr></thead>
+          <div class="tbl-wrap"><table class="tbl">
+            <thead><tr><th>Combo</th><th>Estado</th><th>Componentes</th><th>Se pueden armar</th><th>Lo limita</th></tr></thead>
             <tbody id="i-reporte"></tbody>
-          </table>
+          </table></div>
         </div>
         <div class="panel">
           <h3>Kardex <small>RNF-005 · trazabilidad</small></h3>
-          <div class="kardex-wrap">
-            <table class="tbl tbl-demo">
-              <thead><tr><th>Fecha y hora</th><th>Usuario</th><th>Operación</th><th>Componente</th><th>Entrada</th><th>Salida</th><th>Saldo</th></tr></thead>
-              <tbody id="i-kardex"></tbody>
-            </table>
-          </div>
+          <div class="kardex-wrap"><table class="tbl">
+            <thead><tr><th>Fecha y hora</th><th>Usuario</th><th>Operación</th><th>Componente</th><th>Entrada</th><th>Salida</th><th>Saldo</th></tr></thead>
+            <tbody id="i-kardex"></tbody>
+          </table></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ GESTIÓN ============ -->
-<section id="gestion" class="section alt">
+<!-- ================= DOCUMENTOS ================= -->
+<section id="documentos" class="section dark">
   <div class="wrap">
-    <p class="eyebrow">Gestión del proyecto</p>
-    <h2>Planificado con el PMBOK 8</h2>
-    <p class="section-lead">El problema operativo se convirtió en un proyecto con alcance, EDT, cronograma, presupuesto, riesgos e interesados definidos y verificables.</p>
-
-    <div class="subnav" role="tablist" aria-label="Áreas de gestión">
-      <button role="tab" aria-selected="true" data-g="g-edt">EDT</button>
-      <button role="tab" aria-selected="false" data-g="g-crono">Cronograma</button>
-      <button role="tab" aria-selected="false" data-g="g-costos">Costos</button>
-      <button role="tab" aria-selected="false" data-g="g-riesgos">Riesgos</button>
-      <button role="tab" aria-selected="false" data-g="g-interesados">Interesados</button>
-      <button role="tab" aria-selected="false" data-g="g-control">Calidad y control</button>
-    </div>
-
-    <div class="g-panel" id="g-edt">
-      <div class="g-text">
-        <h3>EDT / WBS</h3>
-        <p>Dos componentes principales: <b>Gestión del Proyecto</b> (inicio, planificación, ejecución, monitoreo y control, cierre) y <b>Desarrollo e Implementación ERP</b> (análisis y requerimientos, diseño, construcción, pruebas y despliegue). 46 elementos elaborados en WBS Schedule Pro.</p>
+    <header class="sec-head reveal">
+      <p class="kicker">08 · Documentos</p>
+      <h2>Los entregables, aquí mismo</h2>
+      <p>Revisa cada documento sin salir de la página. También puedes descargarlo.</p>
+    </header>
+    <div class="viewer reveal">
+      <div class="viewer-tabs" role="tablist" aria-label="Documentos">
+        <button role="tab" aria-selected="true" data-doc="informe"><b>Informe final</b><span>23 páginas</span></button>
+        <button role="tab" aria-selected="false" data-doc="acta"><b>Acta de constitución</b><span>4 hojas</span></button>
+        <button role="tab" aria-selected="false" data-doc="edt"><b>EDT / WBS</b><span>WBS Schedule Pro</span></button>
+        <button role="tab" aria-selected="false" data-doc="crono"><b>Cronograma</b><span>ProjectLibre</span></button>
       </div>
-      <a class="img-scroll" href="assets/img/edt.png" target="_blank" rel="noopener" aria-label="Abrir la EDT completa en una pestaña nueva">
-        <img src="assets/img/edt.png" alt="EDT del proyecto: Sistema ERP – transformación y stock, con Gestión del Proyecto y Desarrollo e Implementación ERP" loading="lazy">
-      </a>
-      <p class="note">Desliza para recorrerla o haz clic para abrirla completa.</p>
-    </div>
-
-    <div class="g-panel" id="g-crono" hidden>
-      <div class="g-text">
-        <h3>Cronograma en ProjectLibre</h3>
-        <p>49 tareas del 24/08/2026 al 28/12/2026, con dependencias fin-comienzo y dos hitos: <b>acta firmada (08/09)</b> y <b>cierre del proyecto (28/12)</b>.</p>
-      </div>
-      <div class="gantt" id="gantt" aria-label="Resumen del cronograma por fases"></div>
-      <details class="more">
-        <summary>Ver el diagrama de Gantt completo</summary>
-        <a href="assets/img/gantt.png" target="_blank" rel="noopener"><img src="assets/img/gantt.png" alt="Diagrama de Gantt del proyecto en ProjectLibre con 49 tareas" loading="lazy"></a>
-      </details>
-    </div>
-
-    <div class="g-panel" id="g-costos" hidden>
-      <div class="two-col">
-        <div>
-          <h3>Presupuesto por componente de la EDT</h3>
-          <table class="tbl">
-            <thead><tr><th>Partida</th><th class="num">Monto</th></tr></thead>
-            <tbody>
-              <tr><td>Gestión del proyecto</td><td class="num">S/ 150.00</td></tr>
-              <tr><td>Análisis de requisitos y diseño técnico</td><td class="num">S/ 200.00</td></tr>
-              <tr><td>Adecuación y desarrollo del ERP</td><td class="num">S/ 500.00</td></tr>
-              <tr><td>Pruebas, despliegue y capacitación</td><td class="num">S/ 150.00</td></tr>
-              <tr><td>Infraestructura y licencias</td><td class="num">S/ 100.00</td></tr>
-              <tr class="sub"><td>Línea base de costos</td><td class="num">S/ 1,100.00</td></tr>
-              <tr><td>Reserva para riesgos y cambios</td><td class="num">S/ 110.00</td></tr>
-              <tr class="total"><td>Presupuesto total</td><td class="num">S/ 1,210.00</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h3>Línea base acumulada (curva S)</h3>
-          <div id="curva" class="chart"></div>
-          <p class="note">Control con valor ganado: SPI = EV/PV y CPI = EV/AC, con meta ≥ 0.95. Una variación mayor al 10 % se informa al patrocinador; si supera el 15 %, se presenta una solicitud de cambio.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-panel" id="g-riesgos" hidden>
-      <div class="two-col">
-        <div>
-          <h3>Matriz de probabilidad e impacto</h3>
-          <div class="heat" id="heat" role="img" aria-label="Matriz de riesgos: R-01 con exposición 16; R-02 y R-03 con 15; R-06 con 12; R-04 y R-05 con 9"></div>
-        </div>
-        <div>
-          <h3>Registro de riesgos</h3>
-          <ul class="risk-list">
-            <li><b>R-01 · 16</b> Inventario físico distinto del registrado. <i>Mitigar:</i> conteo y conciliación antes de migrar.</li>
-            <li><b>R-02 · 15</b> Recetas o cantidades incorrectas. <i>Mitigar:</i> validar cada receta BOM con almacén.</li>
-            <li><b>R-03 · 15</b> Fallos de integración con el ERP o el Kardex. <i>Mitigar:</i> pruebas en copia de la BD y respaldo.</li>
-            <li><b>R-06 · 12</b> Retrasos académicos o técnicos. <i>Aceptar:</i> reserva de S/ 110 y reasignación de tareas.</li>
-            <li><b>R-04 · 9</b> Cambios en los requerimientos. <i>Evitar:</i> control de cambios con el patrocinador.</li>
-            <li><b>R-05 · 9</b> Poca disponibilidad de los usuarios. <i>Mitigar:</i> agendar sesiones por fase.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-panel" id="g-interesados" hidden>
-      <div class="two-col">
-        <div>
-          <h3>Matriz poder–interés</h3>
-          <div class="quad">
-            <div class="q q1"><b>Mantener satisfecho</b><span>Docente revisor</span></div>
-            <div class="q q2"><b>Gestionar de cerca</b><span>Patrocinador</span><span>Responsable del ERP</span></div>
-            <div class="q q3"><b>Monitorear</b></div>
-            <div class="q q4"><b>Mantener informado</b><span>Almacén</span><span>Ventas</span><span>Equipo del proyecto</span></div>
-            <span class="ax ax-y">Poder ↑</span><span class="ax ax-x">Interés →</span>
+      <div class="viewer-body">
+        <div class="viewer-bar">
+          <span id="doc-title">Informe final</span>
+          <div>
+            <button class="chip-btn" id="doc-full">Pantalla completa</button>
+            <a class="chip-btn solid" id="doc-dl" href="assets/docs/Informe_Grupo03_Tarde.pdf" download>Descargar</a>
           </div>
         </div>
-        <div>
-          <h3>Comunicaciones</h3>
-          <table class="tbl">
-            <thead><tr><th>Qué</th><th>A quién</th><th>Cuándo</th></tr></thead>
-            <tbody>
-              <tr><td>Reunión de coordinación</td><td>Equipo</td><td>Semanal</td></tr>
-              <tr><td>Informe de avance (SPI, CPI, riesgos)</td><td>Patrocinador</td><td>Quincenal</td></tr>
-              <tr><td>Validación de entregables</td><td>Patrocinador y usuarios clave</td><td>Al cerrar cada fase</td></tr>
-              <tr><td>Coordinación diaria</td><td>Equipo</td><td>Diaria</td></tr>
-              <tr><td>Capacitación y manual</td><td>Almacén y ventas</td><td>Al desplegar</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-panel" id="g-control" hidden>
-      <div class="two-col">
-        <div>
-          <h3>Métricas de calidad</h3>
-          <table class="tbl">
-            <thead><tr><th>Métrica</th><th>Meta</th></tr></thead>
-            <tbody>
-              <tr><td>Exactitud del descuento de componentes</td><td>100 % de casos</td></tr>
-              <tr><td>Inventario físico vs. sistema</td><td>≥ 98 %</td></tr>
-              <tr><td>Requerimientos con prueba aprobada</td><td>100 %</td></tr>
-              <tr><td>Errores críticos al desplegar</td><td>0</td></tr>
-              <tr><td>Tiempo para registrar una venta de combo</td><td>≤ 1 minuto</td></tr>
-              <tr><td>Operaciones con usuario y fecha</td><td>100 %</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h3>Indicadores de seguimiento</h3>
-          <div class="kpis">
-            <div class="kpi"><b>SPI</b><span>EV / PV</span><em>≥ 0.95</em></div>
-            <div class="kpi"><b>CPI</b><span>EV / AC</span><em>≥ 0.95</em></div>
-            <div class="kpi"><b>Exactitud</b><span>Coincidencias / conteos</span><em>≥ 98 %</em></div>
-            <div class="kpi"><b>Requisitos</b><span>Aprobados / 15</span><em>100 %</em></div>
-          </div>
-          <p class="note">Al corte del 29/10/2026: inicio, planificación, análisis y diseño concluidos; valor planificado acumulado de S/ 358.52 (33 % del BAC).</p>
-        </div>
+        <div class="viewer-frame" id="viewer-frame"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ EQUIPO ============ -->
-<section id="equipo" class="section">
+<!-- ================= CIERRE ================= -->
+<section id="cierre" class="section">
   <div class="wrap">
-    <p class="eyebrow">Quiénes somos</p>
-    <h2>Grupo 03 · Turno Tarde</h2>
-    <p class="section-lead">Estudiantes del IX ciclo de Ingeniería de Sistemas de la Universidad Privada San Juan Bautista.</p>
-    <div class="team">
-      <article class="member"><span class="avatar">OT</span><h3>Torres Espinoza, Omar Marlon</h3><p class="role-name">Director del proyecto</p><p>Planificación, seguimiento, riesgos, comunicaciones y cierre.</p></article>
-      <article class="member"><span class="avatar">JC</span><h3>Cueva Macedo, Junior Alberto</h3><p class="role-name">Administrador del ERP</p><p>Acceso, integración, seguridad y despliegue del ERP.</p></article>
-      <article class="member"><span class="avatar">HA</span><h3>Arteaga Suarez, Herik Aymar</h3><p class="role-name">Analista de requerimientos</p><p>Levantamiento AS-IS, flujo TO-BE, reglas BOM e historias de usuario.</p></article>
-      <article class="member"><span class="avatar">JM</span><h3>Mondalgo Diaz, Jose Alexander</h3><p class="role-name">Desarrollador</p><p>Modelo de despiece y Kardex, módulos de catálogo y almacén.</p></article>
-      <article class="member"><span class="avatar">AM</span><h3>Mosquera Garcia, Anthony Eduardo</h3><p class="role-name">Calidad y documentación</p><p>Casos de prueba, registro de errores, manual y capacitación.</p></article>
+    <header class="sec-head reveal">
+      <p class="kicker">09 · Cierre</p>
+      <h2>Lo que entrega el proyecto y lo que aprendimos</h2>
+    </header>
+    <div class="close-grid">
+      <div class="reveal">
+        <h3>Evaluación de objetivos al cierre</h3>
+        <ul class="checks">
+          <li><b>Alcance</b>9 RF y 6 RNF validados y aceptados.</li>
+          <li><b>Cronograma</b>Entregables e hitos según la línea base, cierre el 28/12/2026.</li>
+          <li><b>Costo</b>Ejecución dentro de S/ 1,210.00, con CPI ≥ 0.95.</li>
+          <li><b>Calidad</b>Pruebas de balance del Kardex aprobadas y 0 errores críticos.</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <h3>Lecciones aprendidas</h3>
+        <ul class="lessons">
+          <li><b>Alcance</b>Validar cada receta BOM con almacén antes de construir.</li>
+          <li><b>Calidad</b>Automatizar las pruebas de balance del Kardex desde el inicio.</li>
+          <li><b>Interesados</b>Agendar validaciones al inicio de cada fase.</li>
+          <li><b>Cronograma</b>Vigilar la ruta crítica cada semana en ProjectLibre.</li>
+        </ul>
+      </div>
     </div>
-    <p class="note center">Docente: Heberht Alvan Chavez Saravia · Curso: Gestión de Proyectos · Semestre 2026-II</p>
-  </div>
-</section>
-
-<!-- ============ ENTREGABLES ============ -->
-<section id="entregables" class="section alt">
-  <div class="wrap">
-    <p class="eyebrow">Entregables</p>
-    <h2>Documentos del proyecto</h2>
-    <div class="docs">
-      <a class="doc" href="assets/docs/Informe_Grupo03_Tarde.pdf" target="_blank" rel="noopener"><b>Informe final</b><span>PDF · 23 páginas</span></a>
-      <a class="doc" href="assets/docs/ActaConstitucion_Grupo03_Tarde.pdf" target="_blank" rel="noopener"><b>Acta de constitución</b><span>PDF</span></a>
-      <a class="doc" href="assets/docs/EDT_Grupo03_Tarde.pdf" target="_blank" rel="noopener"><b>EDT / WBS</b><span>PDF · WBS Schedule Pro</span></a>
-      <a class="doc" href="assets/docs/Cronograma_Grupo03_Tarde.pdf" target="_blank" rel="noopener"><b>Cronograma</b><span>PDF · ProjectLibre</span></a>
-    </div>
-    <div class="lessons">
-      <h3>Lecciones aprendidas</h3>
-      <ul>
-        <li>Validar cada receta BOM con almacén antes de construir.</li>
-        <li>Automatizar las pruebas de balance del Kardex desde el inicio.</li>
-        <li>Agendar las validaciones con los usuarios al inicio de cada fase.</li>
-        <li>Vigilar la ruta crítica cada semana en ProjectLibre.</li>
-      </ul>
+    <div class="pmbok reveal">
+      <h3>PMBOK 7 frente a PMBOK 8</h3>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Aspecto</th><th>7.ª edición (2021)</th><th>8.ª edición (2025)</th></tr></thead>
+        <tbody>
+          <tr><td>Enfoque</td><td>Principios y resultados, sin procesos detallados.</td><td>Integra principios con procesos, sin perder el enfoque en valor.</td></tr>
+          <tr><td>Principios</td><td>12 principios.</td><td>6 principios más concretos.</td></tr>
+          <tr><td>Dominios</td><td>8 dominios de desempeño.</td><td>7 dominios: gobernanza, alcance, cronograma, finanzas, interesados, recursos y riesgos.</td></tr>
+          <tr><td>En este proyecto</td><td>Útil para adaptar el enfoque.</td><td>Sus dominios guiaron directamente los planes.</td></tr>
+        </tbody>
+      </table></div>
     </div>
   </div>
 </section>
@@ -446,11 +706,23 @@
 
 <footer class="footer">
   <div class="wrap footer-in">
-    <img src="assets/img/upsjb.png" alt="Universidad Privada San Juan Bautista" width="44" height="44">
-    <p>Proyecto académico · Gestión de Proyectos · UPSJB · 2026-II<br><small>Casa Novedades Decor es el caso de estudio; los datos de la demo son de ejemplo.</small></p>
+    <img src="assets/img/upsjb-blanco.png" alt="Universidad Privada San Juan Bautista" width="44" height="54">
+    <div>
+      <b>Universidad Privada San Juan Bautista</b>
+      <p>Facultad de Ingenierías · Ingeniería de Sistemas · Gestión de Proyectos · Grupo 03, turno Tarde · 2026-II</p>
+      <small>Casa Novedades Decor es el caso de estudio del proyecto académico. Los datos de la demo son de ejemplo.</small>
+    </div>
+    <a href="#inicio" class="to-top" aria-label="Volver arriba">↑</a>
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lb-close" aria-label="Cerrar">×</button>
+  <div class="lb-body" id="lb-body"></div>
+</div>
+
+<script src="data.js"></script>
 <script src="app.js"></script>
+<script src="site.js"></script>
 </body>
 </html>

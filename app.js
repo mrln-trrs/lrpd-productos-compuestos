@@ -235,74 +235,10 @@
     pintarInventario(nuevos);
   }
 
-  // ------------------------------------------------------------ gestión: Gantt, curva S, riesgos
-  function dia(s) { const [d, m] = s.split("/").map(Number); return new Date(2026, m - 1, d); }
-  function gantt() {
-    const ini = new Date(2026, 7, 1), fin = new Date(2026, 11, 31);
-    const pos = (s) => ((dia(s) - ini) / (fin - ini)) * 100;
-    const fases = [
-      ["Inicio (acta, interesados)", "24/08", "08/09", "pm"],
-      ["Planificación", "09/09", "05/10", "pm"],
-      ["Análisis y requerimientos", "15/09", "05/10", ""],
-      ["Análisis y diseño", "06/10", "26/10", ""],
-      ["Construcción del ERP", "27/10", "23/11", ""],
-      ["Pruebas y QA", "24/11", "07/12", ""],
-      ["Despliegue y capacitación", "08/12", "21/12", ""],
-      ["Monitoreo, control y cierre", "24/11", "23/12", "pm"],
-      ["Validación final", "24/12", "28/12", "pm"],
-    ];
-    let html = `<div class="g-months"><div></div><div><span>Ago</span><span>Set</span><span>Oct</span><span>Nov</span><span>Dic</span></div></div>`;
-    html += fases.map(([n, a, b, cls]) => `<div class="g-row"><span>${n} <small>${a} – ${b}</small></span>
-      <div class="g-track"><span class="g-bar ${cls}" style="left:${pos(a)}%;width:${Math.max(1, pos(b) - pos(a))}%" title="${n}: ${a} al ${b}"></span></div></div>`).join("");
-    html += `<div class="g-row"><span><b>Hitos</b> <small>08/09 · 28/12</small></span><div class="g-track">
-      <span class="g-milestone" style="left:${pos("08/09")}%" title="Acta firmada"></span>
-      <span class="g-milestone" style="left:${pos("28/12")}%" title="Cierre del proyecto"></span></div></div>`;
-    html += `<p class="note">Terracota: gestión del proyecto · Verde: desarrollo e implementación del ERP.</p>`;
-    $("#gantt").innerHTML = html;
-  }
-
-  function curvaS() {
-    const datos = [["Ago", 10.23], ["Set", 127.73], ["Oct", 385.23], ["Nov", 858.52], ["Dic", 1100]];
-    const W = 520, H = 280, m = { l: 56, r: 16, t: 16, b: 34 };
-    const x = (i) => m.l + (i * (W - m.l - m.r)) / (datos.length - 1);
-    const y = (v) => H - m.b - (v / 1200) * (H - m.t - m.b);
-    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S: costo planificado acumulado de S/ 10.23 en agosto a S/ 1,100 en diciembre">`;
-    [0, 300, 600, 900, 1200].forEach((v) => {
-      s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e4d9cc"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#6b5f57">${v}</text>`;
-    });
-    const pts = datos.map((d, i) => `${x(i)},${y(d[1])}`).join(" ");
-    s += `<polygon points="${x(0)},${y(0)} ${pts} ${x(datos.length - 1)},${y(0)}" fill="#4f6f5c" opacity=".12"/>`;
-    s += `<polyline points="${pts}" fill="none" stroke="#4f6f5c" stroke-width="3"/>`;
-    datos.forEach((d, i) => {
-      s += `<circle cx="${x(i)}" cy="${y(d[1])}" r="5" fill="#fff" stroke="#4f6f5c" stroke-width="2.5"><title>${d[0]} 2026: S/ ${d[1].toFixed(2)}</title></circle>`;
-      s += `<text x="${x(i)}" y="${H - 12}" text-anchor="middle" font-size="12" fill="#6b5f57">${d[0]}</text>`;
-    });
-    s += `<text x="${x(4) - 6}" y="${y(1100) - 10}" text-anchor="end" font-size="12" font-weight="700" fill="#2b2420">S/ 1,100 (BAC)</text>`;
-    $("#curva").innerHTML = s + "</svg>";
-  }
-
-  function riesgos() {
-    const R = [["R-01", 4, 4], ["R-02", 3, 5], ["R-03", 3, 5], ["R-04", 3, 3], ["R-05", 3, 3], ["R-06", 3, 4]];
-    let h = "";
-    for (let p = 5; p >= 1; p--) {
-      h += `<div class="lbl">${p}</div>`;
-      for (let i = 1; i <= 5; i++) {
-        const e = p * i;
-        const color = e >= 15 ? "#f2c4b0" : e >= 8 ? "#f6e2b3" : "#dfeadf";
-        const aqui = R.filter((r) => r[1] === p && r[2] === i).map((r) => `<span class="r">${r[0]}</span>`).join("");
-        h += `<div class="cell" style="background:${color}">${aqui}</div>`;
-      }
-    }
-    h += `<div></div>` + [1, 2, 3, 4, 5].map((i) => `<div class="lbl">${i}</div>`).join("");
-    $("#heat").innerHTML = h;
-    $("#heat").insertAdjacentHTML("afterend", `<p class="note">Filas: probabilidad (1–5) · Columnas: impacto (1–5) · Exposición = P × I.</p>`);
-  }
-
   // ------------------------------------------------------------ inicio
   document.addEventListener("DOMContentLoaded", () => {
     db = cargar();
     pestañas(".tabs [role=tab]");
-    pestañas(".subnav [role=tab]");
     $("#form-venta").addEventListener("submit", vender);
     $("#v-devolver").addEventListener("click", devolver);
     $("#v-combo").addEventListener("change", pintarValidacion);
@@ -324,13 +260,7 @@
       try { localStorage.removeItem(CLAVE); } catch (e) { /* ignorar */ }
       db = cargar(); limpiarForm(); mensaje("#v-msg", "Datos reiniciados.", true); refrescar();
     });
-    const btn = document.querySelector(".menu-btn"), menu = $("#menu");
-    btn.addEventListener("click", () => { const o = menu.classList.toggle("open"); btn.setAttribute("aria-expanded", o); });
-    menu.addEventListener("click", (e) => { if (e.target.tagName === "A") { menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); } });
     limpiarForm();
     refrescar();
-    gantt();
-    curvaS();
-    riesgos();
   });
 })();

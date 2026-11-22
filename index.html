@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="fluent.css">
+<link rel="stylesheet" href="soft.css">
 </head>
 <body>
 <div class="progress" aria-hidden="true"><span id="progreso"></span></div>
@@ -77,7 +78,7 @@
     </div>
   </div>
   <div class="wrap">
-    <dl class="hero-stats">
+    <dl class="hero-stats bleed">
       <div class="reveal"><dt>Presupuesto</dt><dd>S/ <span class="count" data-to="1210">0</span></dd></div>
       <div class="reveal"><dt>Tareas en ProjectLibre</dt><dd><span class="count" data-to="49">0</span></dd></div>
       <div class="reveal"><dt>Elementos de la EDT</dt><dd><span class="count" data-to="46">0</span></dd></div>
@@ -88,7 +89,7 @@
 </section>
 
 <!-- ================= PROYECTO ================= -->
-<section id="proyecto" class="section">
+<section id="proyecto" class="section split">
   <div class="wrap">
     <header class="sec-head reveal">
       <p class="kicker">01 · El proyecto</p>
@@ -173,7 +174,7 @@
       <h2>El proyecto en diez diapositivas</h2>
       <p>Usa las flechas del teclado, los botones o desliza en el celular. Puedes verla a pantalla completa.</p>
     </header>
-    <div class="deck reveal" id="deck" tabindex="0" aria-roledescription="carrusel" aria-label="Presentación del proyecto">
+    <div class="deck bleed reveal" id="deck" tabindex="0" aria-roledescription="carrusel" aria-label="Presentación del proyecto">
       <div class="deck-stage" id="deck-stage">
         <article class="slide s-cover">
           <img src="assets/img/upsjb-blanco.png" alt="" class="s-logo">
@@ -269,7 +270,7 @@
 </section>
 
 <!-- ================= EQUIPO ================= -->
-<section id="equipo" class="section">
+<section id="equipo" class="section split">
   <div class="wrap">
     <header class="sec-head reveal">
       <p class="kicker">03 · Equipo</p>
@@ -324,7 +325,7 @@
       <h2>Ciclo de vida del proyecto</h2>
       <p>El estado de cada etapa se calcula con la fecha de hoy frente a la línea base. Toca una etapa para ver sus entregables.</p>
     </header>
-    <div class="stages reveal" id="stages" role="tablist" aria-label="Etapas"></div>
+    <div class="stages bleed reveal" id="stages" role="tablist" aria-label="Etapas"></div>
     <div class="stage-detail reveal" id="stage-detail" role="tabpanel" aria-live="polite"></div>
   </div>
 </section>
@@ -504,7 +505,7 @@
 </section>
 
 <!-- ================= CONTROL ================= -->
-<section id="control" class="section soft">
+<section id="control" class="section soft split">
   <div class="wrap">
     <header class="sec-head reveal">
       <p class="kicker">06 · Seguimiento y control</p>
@@ -640,7 +641,7 @@
       <h2>Los entregables, aquí mismo</h2>
       <p>Revisa cada documento sin salir de la página. También puedes descargarlo.</p>
     </header>
-    <div class="viewer reveal">
+    <div class="viewer bleed reveal">
       <div class="viewer-tabs" role="tablist" aria-label="Documentos">
         <button role="tab" aria-selected="true" data-doc="informe"><b>Informe final</b><span>23 páginas</span></button>
         <button role="tab" aria-selected="false" data-doc="acta"><b>Acta de constitución</b><span>4 hojas</span></button>
@@ -662,7 +663,7 @@
 </section>
 
 <!-- ================= CIERRE ================= -->
-<section id="cierre" class="section">
+<section id="cierre" class="section split">
   <div class="wrap">
     <header class="sec-head reveal">
       <p class="kicker">09 · Cierre</p>

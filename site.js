@@ -41,7 +41,36 @@
         io.unobserve(e.target);
       });
     }, { threshold: 0.12 });
-    $$(".reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
+    const dirs = ["up", "left", "right", "zoom", "up", "right", "left", "down"];
+    $$(".reveal").forEach((el, i) => {
+      if (!el.dataset.dir) el.dataset.dir = el.classList.contains("bleed") ? "up" : dirs[i % dirs.length];
+      el.style.transitionDelay = (i % 3) * 90 + "ms";
+      io.observe(el);
+    });
+    // números grandes de cada sección que se desplazan despacio con el scroll
+    $$(".sec-head").forEach((h) => {
+      const k = $(".kicker", h);
+      const n = k && k.textContent.match(/^\s*(\d+)/);
+      if (!n) return;
+      const s = document.createElement("span");
+      s.className = "big-num"; s.textContent = n[1]; s.setAttribute("aria-hidden", "true");
+      s.dataset.speed = (0.12 + (+n[1] % 3) * 0.05).toFixed(2);
+      h.prepend(s);
+    });
+    if (!reduce) {
+      let pend = false;
+      const mover = () => {
+        pend = false;
+        const vh = innerHeight;
+        $$(".big-num, [data-speed]").forEach((el) => {
+          const r = el.parentElement.getBoundingClientRect();
+          const d = (r.top + r.height / 2 - vh / 2) * +(el.dataset.speed || 0.1);
+          el.style.transform = el.classList.contains("big-num") ? `translate(${d * 0.4}px, ${d}px)` : `translateY(${d}px)`;
+        });
+      };
+      addEventListener("scroll", () => { if (!pend) { pend = true; requestAnimationFrame(mover); } }, { passive: true });
+      mover();
+    }
     function contar(el) {
       if (el.dataset.done) return;
       el.dataset.done = 1;

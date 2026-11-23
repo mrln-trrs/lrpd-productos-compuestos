@@ -58,7 +58,8 @@
       s.dataset.speed = (0.12 + (+n[1] % 3) * 0.05).toFixed(2);
       h.prepend(s);
     });
-    if (!reduce) {
+    const liviano = matchMedia("(max-width: 900px), (hover: none)").matches;
+    if (!reduce && !liviano) {
       let pend = false;
       const mover = () => {
         pend = false;
@@ -360,7 +361,8 @@
       $("#documentos").scrollIntoView({ behavior: "smooth" });
     });
     $("#doc-full").addEventListener("click", () => pantallaCompleta($(".viewer-body")));
-    render("informe");
+    // en celulares el PDF no se incrusta: se abre primero un documento con hojas en imagen
+    abrir(matchMedia("(max-width: 900px), (hover: none)").matches ? "acta" : "informe");
   }
 
   document.addEventListener("DOMContentLoaded", () => {

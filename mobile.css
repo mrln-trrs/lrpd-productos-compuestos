@@ -1,0 +1,48 @@
+/* =====================================================================
+   Celular y tabletas: mismo diseño, sin efectos caros.
+   El desenfoque (backdrop-filter), el ruido fijo y el parallax obligan
+   al teléfono a repintar en cada cuadro del scroll y lo vuelven
+   «entrecortado». Aquí se cambian por fondos casi opacos.
+   ===================================================================== */
+@media (max-width: 900px), (hover: none) {
+  *, *::before, *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  body::after { display: none; }
+  body::before { position: absolute; height: 100%; min-height: 100vh; }
+  :root { --tint: rgba(255, 255, 255, .78); --tint-2: rgba(255, 255, 255, .6); }
+  .nav { background-color: rgba(250, 249, 247, .97); }
+  .section.dark { background: #1f1e23; background-image: none; }
+  .footer { background: #6f1a1e; }
+  .hero-card { background-color: #fff; }
+  .lightbox { background: rgba(20, 20, 24, .94); }
+
+  /* sin parallax ni animaciones continuas */
+  .big-num { display: none; }
+  .hero-bg span, .pulse, .st-dot { animation: none !important; }
+  .member:hover, .pillar:hover, .kpi:hover, .stage:hover { transform: none; }
+
+  /* entradas cortas y solo verticales: sin desplazamientos laterales */
+  .reveal { transition: opacity .5s ease, transform .5s ease; transition-delay: 0s !important; }
+  .reveal[data-dir] { transform: translateY(18px); }
+  .reveal.in { transform: none; }
+  .reveal { will-change: auto; }
+}
+
+/* ---------- composición en pantallas chicas ---------- */
+@media (max-width: 900px) {
+  html { scroll-behavior: auto; }
+  .hero { padding-top: 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+  .hero-card { margin: 0; max-width: 420px; }
+  .hero-stats.bleed { margin-top: 40px; }
+  .section { padding: 72px 0; }
+  .deck.bleed .slide { min-height: 440px; padding: 32px 20px 40px; }
+  .dk-dots { flex-wrap: nowrap; overflow: hidden; }
+  .stages.bleed .stage { flex-basis: 78vw; }
+  .viewer.bleed { padding: 0 16px; }
+  .split .sec-head h2, .sec-head h2 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+}
+@media (max-width: 900px), (hover: none) {
+  .viewer-frame .pdf, .viewer-frame object { min-height: 0; height: auto; }
+  .pdf-fallback { padding: 32px 16px; }
+}

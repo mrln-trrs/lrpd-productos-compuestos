@@ -79,11 +79,11 @@
   </div>
   <div class="wrap">
     <dl class="hero-stats bleed">
-      <div class="reveal"><dt>Presupuesto</dt><dd>S/ <span class="count" data-to="1210">0</span></dd></div>
+      <div class="reveal"><dt>Presupuesto</dt><dd>S/ <span class="count" data-to="39510">0</span></dd></div>
       <div class="reveal"><dt>Tareas en ProjectLibre</dt><dd><span class="count" data-to="49">0</span></dd></div>
-      <div class="reveal"><dt>Elementos de la EDT</dt><dd><span class="count" data-to="46">0</span></dd></div>
+      <div class="reveal"><dt>Elementos de la EDT</dt><dd><span class="count" data-to="50">0</span></dd></div>
       <div class="reveal"><dt>Requisitos</dt><dd><span class="count" data-to="15">0</span></dd></div>
-      <div class="reveal"><dt>Duración</dt><dd><span class="count" data-to="18">0</span> semanas</dd></div>
+      <div class="reveal"><dt>Duración</dt><dd><span class="count" data-to="16">0</span> semanas</dd></div>
     </dl>
   </div>
 </section>
@@ -101,7 +101,7 @@
       <article class="pillar reveal">
         <span class="pi-ico" aria-hidden="true">!</span>
         <h3>Problema</h3>
-        <p>Al vender un combo no se actualizaba el stock de sus componentes. Sin procedimientos para registrar, modificar o desarmar combos, no había trazabilidad y aparecían diferencias con el inventario físico.</p>
+        <p>Al vender un combo no se actualizaba el stock de sus componentes. La tienda maneja 12 combos activos con 45 componentes, vende unos 180 combos al mes, hace cerca de 25 ajustes manuales mensuales y el 8 % de los componentes no cuadra con el conteo físico.</p>
       </article>
       <article class="pillar reveal">
         <span class="pi-ico" aria-hidden="true">◎</span>
@@ -133,6 +133,29 @@
       <div class="ba good">
         <span class="ba-tag">Con la mejora</span>
         <p>Se valida que alcancen los componentes, se descuentan 2 manteles, 8 individuales y 2 centros, y cada salida queda en el Kardex con usuario y fecha.</p>
+      </div>
+    </div>
+
+    <div class="value reveal">
+      <div class="value-head">
+        <h3>Beneficios esperados</h3>
+        <p>El éxito no se mide solo por terminar a tiempo: cada beneficio tiene línea base (setiembre de 2026), meta a tres meses del despliegue y un responsable de medirlo.</p>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Indicador</th><th class="num">Línea base</th><th class="num">Meta (marzo 2027)</th><th>Mide</th></tr></thead>
+        <tbody>
+          <tr><td>Exactitud del inventario de componentes</td><td class="num">92 %</td><td class="num">≥ 98 %</td><td>Almacén</td></tr>
+          <tr><td>Ajustes manuales de inventario por mes</td><td class="num">25</td><td class="num">≤ 5</td><td>Almacén</td></tr>
+          <tr><td>Tiempo para registrar la venta de un combo</td><td class="num">4 min</td><td class="num">≤ 1 min</td><td>Ventas</td></tr>
+          <tr><td>Ventas de combos perdidas por falta de stock</td><td class="num">6 / mes</td><td class="num">0</td><td>Ventas</td></tr>
+          <tr><td>Operaciones con usuario y fecha registrados</td><td class="num">0 %</td><td class="num">100 %</td><td>Responsable del ERP</td></tr>
+          <tr><td>Pérdida mensual por mermas y descuadres</td><td class="num">S/ 1,200</td><td class="num">≤ S/ 300</td><td>Patrocinador</td></tr>
+        </tbody>
+      </table></div>
+      <div class="roi">
+        <div><b>S/ 2,400</b><span>beneficio mensual estimado</span></div>
+        <div><b>16,5 meses</b><span>periodo de recuperación</span></div>
+        <div><b>≈ 119 %</b><span>retorno a tres años</span></div>
       </div>
     </div>
 
@@ -171,7 +194,7 @@
   <div class="wrap">
     <header class="sec-head reveal">
       <p class="kicker">02 · Presentación</p>
-      <h2>El proyecto en diez diapositivas</h2>
+      <h2>El proyecto en once diapositivas</h2>
       <p>Usa las flechas del teclado, los botones o desliza en el celular. Puedes verla a pantalla completa.</p>
     </header>
     <div class="deck bleed reveal" id="deck" tabindex="0" aria-roledescription="carrusel" aria-label="Presentación del proyecto">
@@ -208,29 +231,29 @@
         </article>
         <article class="slide">
           <p class="s-kicker">EDT / WBS</p>
-          <h3>46 elementos en dos componentes</h3>
+          <h3>50 elementos y 36 paquetes de trabajo</h3>
           <div class="s-cols two">
             <div class="s-box"><b>1. Gestión del Proyecto</b><span>Inicio · Planificación · Ejecución · Monitoreo y control · Cierre</span></div>
             <div class="s-box"><b>2. Desarrollo e Implementación ERP</b><span>Análisis · Diseño · Construcción · Pruebas y QA · Despliegue</span></div>
           </div>
+          <p class="s-note">Más la validación final con el patrocinador (3) y el hito de cierre (4). Rediseñada en draw.io con la codificación de ProjectLibre.</p>
         </article>
         <article class="slide">
           <p class="s-kicker">Cronograma</p>
-          <h3>24/08/2026 → 28/12/2026</h3>
-          <div class="s-big"><div><b>49</b><span>tareas</span></div><div><b>2</b><span>hitos</span></div><div><b>18</b><span>semanas</span></div></div>
-          <p class="s-note">Hitos: acta firmada (08/09) y cierre del proyecto (28/12). Dependencias fin-comienzo en ProjectLibre.</p>
+          <h3>20/08/2026 → 10/12/2026</h3>
+          <div class="s-big"><div><b>49</b><span>tareas</span></div><div><b>2</b><span>hitos</span></div><div><b>16</b><span>semanas</span></div></div>
+          <p class="s-note">81 días hábiles. Hitos: acta firmada (31/08) y cierre del proyecto (10/12). Dependencias fin-comienzo en ProjectLibre.</p>
         </article>
         <article class="slide">
           <p class="s-kicker">Costos</p>
-          <h3>Presupuesto total: S/ 1,210.00</h3>
+          <h3>Presupuesto total: S/ 39,510.00</h3>
           <div class="s-bars">
-            <div style="--w:45%"><span>Adecuación del ERP</span><b>S/ 500</b></div>
-            <div style="--w:18%"><span>Análisis y diseño</span><b>S/ 200</b></div>
-            <div style="--w:14%"><span>Gestión del proyecto</span><b>S/ 150</b></div>
-            <div style="--w:14%"><span>Pruebas y despliegue</span><b>S/ 150</b></div>
-            <div style="--w:9%"><span>Infraestructura</span><b>S/ 100</b></div>
-            <div style="--w:10%" class="res"><span>Reserva</span><b>S/ 110</b></div>
+            <div style="--w:44%"><span>Desarrollo e implementación ERP</span><b>S/ 17,485</b></div>
+            <div style="--w:36%"><span>Gestión del proyecto</span><b>S/ 14,330</b></div>
+            <div style="--w:3%"><span>Validación final</span><b>S/ 1,110</b></div>
+            <div style="--w:17%" class="res"><span>Reservas (10 % + 10 %)</span><b>S/ 6,585</b></div>
           </div>
+          <p class="s-note">Tarifas del mercado peruano con sobrecosto laboral (≈ 37 %). El presupuesto inicial de S/ 1,210 solo cubría gastos operativos.</p>
         </article>
         <article class="slide">
           <p class="s-kicker">Riesgos</p>
@@ -238,8 +261,15 @@
           <div class="s-cols">
             <div class="s-box"><b>R-01 · 16</b><span>Inventario físico distinto del registrado → conteo y conciliación.</span></div>
             <div class="s-box"><b>R-02 · 15</b><span>Recetas incorrectas → validar cada BOM con almacén.</span></div>
-            <div class="s-box"><b>R-03 · 15</b><span>Fallos con el ERP o el Kardex → pruebas en copia de la BD.</span></div>
+            <div class="s-box"><b>R-11 · 15</b><span>Sin respaldo verificado de la BD → backup diario y prueba de restauración.</span></div>
           </div>
+          <p class="s-note">11 riesgos registrados; las exposiciones ≥ 15 se escalan al comité.</p>
+        </article>
+        <article class="slide">
+          <p class="s-kicker">Seguimiento · corte al 20/11/2026</p>
+          <h3>83 % de avance, dentro de las metas</h3>
+          <div class="s-big"><div><b>0.99</b><span>SPI</span></div><div><b>0.98</b><span>CPI</span></div><div><b>2 / 2</b><span>cambios a tiempo</span></div></div>
+          <p class="s-note">SC-01 aprobada con la reserva de contingencia; SC-02 postergada. Lección aprendida N.º 01: el control de cambios es un proceso continuo.</p>
         </article>
         <article class="slide">
           <p class="s-kicker">Equipo</p>
@@ -255,13 +285,13 @@
         <article class="slide s-cover">
           <p class="s-kicker">Conclusión</p>
           <h3>Del inventario descuadrado a un proyecto con alcance, EDT, cronograma y presupuesto verificables</h3>
-          <p class="s-meta">El valor principal: la exactitud del descuento de componentes. ¡Gracias!</p>
+          <p class="s-meta">S/ 39,510 que se recuperan en unos 16 meses con un inventario que cuadra. ¡Gracias!</p>
         </article>
       </div>
       <div class="deck-ctrl">
         <button class="dk-btn" id="dk-prev" aria-label="Diapositiva anterior">‹</button>
         <div class="dk-dots" id="dk-dots" role="tablist" aria-label="Diapositivas"></div>
-        <span class="dk-count" id="dk-count">1 / 10</span>
+        <span class="dk-count" id="dk-count">1 / 11</span>
         <button class="dk-btn" id="dk-next" aria-label="Diapositiva siguiente">›</button>
         <button class="dk-btn dk-full" id="dk-full" aria-label="Pantalla completa">⤢</button>
       </div>
@@ -302,17 +332,18 @@
         <table class="tbl">
           <thead><tr><th>Paquete de trabajo</th><th>Director</th><th>Analista</th><th>Desarrolladores</th><th>QA / doc.</th><th>Patrocinador</th></tr></thead>
           <tbody>
-            <tr><td>Acta de constitución</td><td>R/A</td><td>C</td><td>I</td><td>I</td><td>A</td></tr>
+            <tr><td>Acta de constitución</td><td>R</td><td>C</td><td>I</td><td>I</td><td>A</td></tr>
             <tr><td>Requerimientos y reglas BOM</td><td>A</td><td>R</td><td>C</td><td>C</td><td>I</td></tr>
             <tr><td>Diseño de BD y arquitectura</td><td>A</td><td>C</td><td>R</td><td>I</td><td>I</td></tr>
             <tr><td>Construcción del ERP</td><td>A</td><td>C</td><td>R</td><td>C</td><td>I</td></tr>
             <tr><td>Pruebas y corrección</td><td>A</td><td>C</td><td>R</td><td>R</td><td>I</td></tr>
+            <tr><td>Control de cambios</td><td>R</td><td>C</td><td>C</td><td>I</td><td>A</td></tr>
             <tr><td>Despliegue y capacitación</td><td>A</td><td>I</td><td>R</td><td>R</td><td>C</td></tr>
             <tr><td>Aceptación y cierre</td><td>R</td><td>I</td><td>I</td><td>C</td><td>A</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="note">R: responsable · A: aprueba · C: consultado · I: informado.</p>
+      <p class="note">R: responsable · A: aprueba · C: consultado · I: informado. Cada paquete técnico tiene un respaldo: Mondalgo respalda a Cueva en el ERP y Arteaga a Mosquera en la documentación (riesgo R-07).</p>
     </details>
   </div>
 </section>
@@ -336,11 +367,12 @@
     <header class="sec-head reveal">
       <p class="kicker">05 · Planeación</p>
       <h2>Los planes del proyecto</h2>
-      <p>Cada plan sigue los dominios de desempeño del PMBOK 8: alcance, cronograma, finanzas, recursos, riesgos e interesados.</p>
+      <p>Cada plan sigue los dominios de desempeño del PMBOK 8: gobernanza, alcance, cronograma, finanzas, interesados, recursos y riesgos.</p>
     </header>
     <div class="plan-tabs reveal" role="tablist" aria-label="Planes">
       <button role="tab" aria-selected="true" data-p="p-crono">Cronograma</button>
       <button role="tab" aria-selected="false" data-p="p-edt">EDT</button>
+      <button role="tab" aria-selected="false" data-p="p-gob">Gobernanza</button>
       <button role="tab" aria-selected="false" data-p="p-alcance">Alcance</button>
       <button role="tab" aria-selected="false" data-p="p-costos">Costos</button>
       <button role="tab" aria-selected="false" data-p="p-calidad">Calidad</button>
@@ -352,7 +384,7 @@
 
     <div class="plan" id="p-crono" role="tabpanel">
       <div class="plan-head">
-        <div><h3>Cronograma interactivo</h3><p>Las 49 tareas reales de ProjectLibre. Pasa el cursor por una barra para ver sus fechas y dependencias; contrae o expande cada fase.</p></div>
+        <div><h3>Cronograma interactivo</h3><p>Las 49 tareas de ProjectLibre con el avance al 20/11/2026. La parte oscura de cada barra es lo completado. Pasa el cursor para ver fechas, avance y dependencias.</p></div>
         <div class="gantt-tools">
           <button class="chip-btn" id="g-expand">Expandir todo</button>
           <button class="chip-btn" id="g-collapse">Solo fases</button>
@@ -360,12 +392,45 @@
       </div>
       <div class="gantt" id="gantt"></div>
       <div class="legend"><span class="lg pm"></span>Gestión del proyecto <span class="lg dev"></span>Desarrollo ERP <span class="lg ms"></span>Hito <span class="lg today"></span>Hoy</div>
+      <p class="note">Ruta crítica: análisis, diseño de la BD de despiece, motor de débito compuesto, pruebas y despliegue. <button class="link-btn" data-lightbox="assets/img/gantt.png">Ver el Gantt de ProjectLibre</button></p>
     </div>
 
     <div class="plan" id="p-edt" role="tabpanel" hidden>
-      <div class="plan-head"><div><h3>Estructura de Desglose del Trabajo</h3><p>46 elementos en WBS Schedule Pro. Usa el zoom o abre la vista completa.</p></div>
+      <div class="plan-head"><div><h3>Estructura de Desglose del Trabajo</h3><p>50 elementos y 36 paquetes de trabajo, en draw.io con la misma codificación del cronograma. Usa el zoom o abre la vista completa.</p></div>
         <div class="gantt-tools"><button class="chip-btn" data-zoom="-1" data-target="edt-img">−</button><button class="chip-btn" data-zoom="1" data-target="edt-img">+</button><button class="chip-btn" data-lightbox="assets/img/edt.png">Pantalla completa</button></div></div>
-      <div class="pan" id="edt-pan"><img id="edt-img" src="assets/img/edt.png" alt="EDT del proyecto: Sistema ERP – Transformación y Stock" loading="lazy"></div>
+      <div class="pan" id="edt-pan"><img id="edt-img" src="assets/img/edt.png" alt="EDT del proyecto CND: gestión del proyecto, desarrollo e implementación del ERP, validación final y cierre" loading="lazy"></div>
+    </div>
+
+    <div class="plan" id="p-gob" role="tabpanel" hidden>
+      <div class="cols2">
+        <div>
+          <h3>Comité y autoridad de decisión</h3>
+          <p class="plan-p">El comité lo integran el patrocinador, el director y el administrador del ERP. Sesiona cada quince días y, de forma extraordinaria, cuando se supera un umbral. Aprueba cambios de alcance, uso de reservas y aceptación de cada fase.</p>
+          <ul class="plain">
+            <li><b>Patrocinador:</b> preside el comité; aprueba alcance, presupuesto, reserva de gestión, cambios mayores y cierre.</li>
+            <li><b>Director del proyecto:</b> usa la contingencia hasta S/ 500 por evento y ajusta el cronograma dentro de la holgura.</li>
+            <li><b>Autoridad técnica (ERP):</b> aprueba cambios de base de datos, arquitectura, seguridad y despliegue.</li>
+            <li><b>Analista:</b> secretario del comité; lleva el registro de cambios y las actas.</li>
+            <li><b>Calidad:</b> autoriza el paso de un entregable a validación.</li>
+            <li><b>Usuarios clave:</b> dan conformidad funcional; no aprueban cambios de alcance.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Niveles de escalamiento</h3>
+          <div class="tbl-wrap"><table class="tbl">
+            <thead><tr><th>Nivel</th><th>Umbral</th><th>Decide</th><th>Plazo</th></tr></thead>
+            <tbody>
+              <tr><td>1 · Equipo</td><td>Costo ≤ 5 % o retraso ≤ 3 días sin tocar la ruta crítica</td><td>Director</td><td>24 h</td></tr>
+              <tr><td>2 · Comité</td><td>Costo 5–10 %, retraso de 4 a 5 días o riesgo ≥ 15</td><td>Comité</td><td>3 días</td></tr>
+              <tr><td>3 · Patrocinador</td><td>Costo &gt; 10 %, retraso &gt; 5 días, cambio de alcance o reserva de gestión</td><td>Patrocinador</td><td>5 días</td></tr>
+            </tbody>
+          </table></div>
+          <h4>Flujo de aprobación</h4>
+          <ol class="mini-steps">
+            <li>Formato de solicitud</li><li>Análisis de impacto (≤ 3 días)</li><li>Decide el nivel que corresponde</li><li>Acta y registro de cambios</li><li>Se actualizan EDT, cronograma y costos</li>
+          </ol>
+        </div>
+      </div>
     </div>
 
     <div class="plan" id="p-alcance" role="tabpanel" hidden>
@@ -392,27 +457,47 @@
     </div>
 
     <div class="plan" id="p-costos" role="tabpanel" hidden>
+      <div class="plan-head"><div><h3>Presupuesto por fase y tipo de recurso</h3><p>Reestructurado con precios referenciales del mercado peruano. Costo directo de S/ 32,925.00 más dos reservas del 10 %.</p></div>
+        <div class="gantt-tools"><button class="chip-btn" data-doc-open="costeo">Ver costeo por actividad</button></div></div>
+      <div class="tbl-wrap"><table class="tbl budget">
+        <thead><tr><th>Componente</th><th>Fase</th><th class="num">Personal</th><th class="num">Materiales</th><th class="num">Máquinas</th><th class="num">Total S/</th></tr></thead>
+        <tbody>
+              <tr class="grp"><td>Gestión del proyecto</td><td>Inicio</td><td class="num">3,157.00</td><td class="num">38.00</td><td class="num">35.00</td><td class="num"><b>3,230.00</b></td></tr>
+              <tr><td></td><td>Planificación</td><td class="num">2,550.00</td><td class="num">15.00</td><td class="num">29.00</td><td class="num"><b>2,594.00</b></td></tr>
+              <tr><td></td><td>Ejecución</td><td class="num">4,326.00</td><td class="num">40.00</td><td class="num">44.00</td><td class="num"><b>4,410.00</b></td></tr>
+              <tr><td></td><td>Monitoreo y control</td><td class="num">2,668.00</td><td class="num">12.00</td><td class="num">29.00</td><td class="num"><b>2,709.00</b></td></tr>
+              <tr><td></td><td>Cierre</td><td class="num">1,338.00</td><td class="num">35.00</td><td class="num">14.00</td><td class="num"><b>1,387.00</b></td></tr>
+              <tr class="grp"><td>Desarrollo e implementación ERP</td><td>Análisis y requerimientos</td><td class="num">2,276.00</td><td class="num">170.00</td><td class="num">38.00</td><td class="num"><b>2,484.00</b></td></tr>
+              <tr><td></td><td>Análisis y diseño</td><td class="num">3,376.00</td><td class="num">35.00</td><td class="num">316.00</td><td class="num"><b>3,727.00</b></td></tr>
+              <tr><td></td><td>Construcción y adecuación</td><td class="num">5,244.00</td><td class="num">75.00</td><td class="num">90.00</td><td class="num"><b>5,409.00</b></td></tr>
+              <tr><td></td><td>Pruebas y QA</td><td class="num">2,830.00</td><td class="num">30.00</td><td class="num">45.00</td><td class="num"><b>2,905.00</b></td></tr>
+              <tr><td></td><td>Despliegue y cierre técnico</td><td class="num">2,640.00</td><td class="num">280.00</td><td class="num">40.00</td><td class="num"><b>2,960.00</b></td></tr>
+              <tr class="grp"><td>Validación final</td><td>Con el patrocinador</td><td class="num">1,090.00</td><td class="num">10.00</td><td class="num">10.00</td><td class="num"><b>1,110.00</b></td></tr>
+          <tr class="sub"><td colspan="2">Costo directo (línea base)</td><td class="num">31,495.00</td><td class="num">740.00</td><td class="num">690.00</td><td class="num">32,925.00</td></tr>
+          <tr><td colspan="5">Reserva de contingencia (10 %) · la administra el director hasta S/ 500 por evento</td><td class="num">3,292.50</td></tr>
+          <tr><td colspan="5">Reserva de gestión (10 %) · solo la libera el patrocinador</td><td class="num">3,292.50</td></tr>
+          <tr class="total"><td colspan="5">Presupuesto total del proyecto</td><td class="num">S/ 39,510.00</td></tr>
+        </tbody>
+      </table></div>
       <div class="cols2">
         <div>
-          <h3>Presupuesto por componente de la EDT</h3>
+          <h3>Tarifas referenciales del personal</h3>
           <div class="tbl-wrap"><table class="tbl">
-            <thead><tr><th>Partida</th><th>Periodo</th><th class="num">Monto</th></tr></thead>
+            <thead><tr><th>Rol</th><th class="num">Sueldo</th><th class="num">Costo empleador (×1.37)</th><th class="num">S/ por hora</th></tr></thead>
             <tbody>
-              <tr><td>Gestión del proyecto</td><td>24/08 – 23/12</td><td class="num">S/ 150.00</td></tr>
-              <tr><td>Análisis de requisitos y diseño</td><td>15/09 – 26/10</td><td class="num">S/ 200.00</td></tr>
-              <tr><td>Adecuación y desarrollo del ERP</td><td>27/10 – 23/11</td><td class="num">S/ 500.00</td></tr>
-              <tr><td>Pruebas, despliegue y capacitación</td><td>24/11 – 21/12</td><td class="num">S/ 150.00</td></tr>
-              <tr><td>Infraestructura y licencias</td><td>08/12 – 14/12</td><td class="num">S/ 100.00</td></tr>
-              <tr class="sub"><td colspan="2">Línea base de costos</td><td class="num">S/ 1,100.00</td></tr>
-              <tr><td colspan="2">Reserva para riesgos y cambios</td><td class="num">S/ 110.00</td></tr>
-              <tr class="total"><td colspan="2">Presupuesto total</td><td class="num">S/ 1,210.00</td></tr>
+              <tr><td>Director del proyecto</td><td class="num">7,000</td><td class="num">9,590</td><td class="num">54.50</td></tr>
+              <tr><td>Analista de requerimientos</td><td class="num">4,000</td><td class="num">5,480</td><td class="num">31.00</td></tr>
+              <tr><td>Administrador del ERP</td><td class="num">4,500</td><td class="num">6,165</td><td class="num">35.00</td></tr>
+              <tr><td>Desarrollador de BD e interfaces</td><td class="num">3,500</td><td class="num">4,795</td><td class="num">27.00</td></tr>
+              <tr><td>QA y documentación</td><td class="num">4,000</td><td class="num">5,480</td><td class="num">31.00</td></tr>
             </tbody>
           </table></div>
+          <p class="note">176 horas por mes. Sobrecosto del régimen general: EsSalud 9 %, gratificaciones con bonificación y CTS. Laptops a S/ 0.50 por hora y VPS de pruebas a S/ 65 al mes.</p>
         </div>
         <div>
           <h3>Línea base acumulada (curva S)</h3>
           <div id="curva" class="chart"></div>
-          <p class="note">Estimación análoga y de abajo hacia arriba. Variaciones de costo o cronograma mayores al 10 % se informan al patrocinador; mayores al 15 %, generan una solicitud de cambio.</p>
+          <p class="note">Puntos de color: valor ganado (EV) y costo real (AC) al corte del 20/11/2026.</p>
         </div>
       </div>
     </div>
@@ -435,11 +520,13 @@
       <div class="tbl-wrap"><table class="tbl">
         <thead><tr><th>Comunicación</th><th>Dirigida a</th><th>Frecuencia</th><th>Medio</th><th>Responsable</th></tr></thead>
         <tbody>
-          <tr><td>Reunión de coordinación</td><td>Equipo</td><td>Semanal</td><td>Google Meet / presencial</td><td>Director</td></tr>
+          <tr><td>Reunión de coordinación</td><td>Equipo</td><td>Semanal (domingo)</td><td>Google Meet / presencial</td><td>Director</td></tr>
+          <tr><td>Sesión del comité del proyecto</td><td>Patrocinador, director, admin. ERP</td><td>Quincenal</td><td>Reunión y acta</td><td>Director</td></tr>
           <tr><td>Informe de avance (SPI, CPI, riesgos)</td><td>Patrocinador</td><td>Quincenal</td><td>Correo con PDF</td><td>Director</td></tr>
           <tr><td>Validación de entregables</td><td>Patrocinador y usuarios clave</td><td>Al cerrar cada fase</td><td>Reunión y acta</td><td>Analista</td></tr>
           <tr><td>Coordinación diaria</td><td>Equipo</td><td>Diaria</td><td>WhatsApp del equipo</td><td>Todos</td></tr>
-          <tr><td>Solicitudes de cambio</td><td>Patrocinador</td><td>Cuando ocurra</td><td>Formato de cambio</td><td>Director</td></tr>
+          <tr><td>Solicitudes de cambio</td><td>Director → comité / patrocinador</td><td>Cuando ocurra</td><td>Formato de cambio</td><td>Director</td></tr>
+          <tr><td>Escalamiento de incidencias</td><td>Según el nivel</td><td>Al superar un umbral</td><td>Correo y llamada</td><td>Director</td></tr>
           <tr><td>Revisión académica</td><td>Docente</td><td>Calendario del curso</td><td>Aula virtual</td><td>Director</td></tr>
           <tr><td>Capacitación y manual</td><td>Almacén y ventas</td><td>Al desplegar</td><td>Taller y PDF</td><td>QA / doc.</td></tr>
         </tbody>
@@ -450,18 +537,23 @@
       <div class="cols2">
         <div>
           <h3>Matriz de probabilidad e impacto</h3>
-          <div class="heat" id="heat" role="img" aria-label="Matriz de riesgos: R-01 exposición 16; R-02 y R-03, 15; R-06, 12; R-04 y R-05, 9"></div>
+          <div class="heat" id="heat" role="img" aria-label="Matriz de riesgos: R-01 exposición 16; R-02, R-03 y R-11, 15; R-06, 12; R-09 y R-10, 10; R-04 y R-05, 9; R-07 y R-08, 8"></div>
           <p class="note">Filas: probabilidad · Columnas: impacto · Exposición = P × I.</p>
         </div>
         <div>
-          <h3>Registro de riesgos</h3>
+          <h3>Registro de riesgos (11)</h3>
           <ul class="risks">
-            <li class="hi"><b>R-01 · 16</b>Inventario físico distinto del registrado.<i>Mitigar: conteo y conciliación antes de migrar.</i></li>
+            <li class="hi"><b>R-01 · 16</b>Inventario físico distinto del registrado.<i>Mitigar: conteo físico y conciliación antes de migrar.</i></li>
             <li class="hi"><b>R-02 · 15</b>Reglas de composición o cantidades incorrectas.<i>Mitigar: validar cada receta BOM con almacén.</i></li>
             <li class="hi"><b>R-03 · 15</b>Fallos de integración con el ERP o el Kardex.<i>Mitigar: pruebas en copia de la BD y respaldo.</i></li>
-            <li class="md"><b>R-06 · 12</b>Retrasos académicos o técnicos del equipo.<i>Aceptar: reserva de S/ 110 y reasignación.</i></li>
+            <li class="hi"><b>R-11 · 15</b>Falta de respaldo verificado de la BD.<i>Evitar: backup diario, copia externa semanal y prueba de restauración.</i></li>
+            <li class="md"><b>R-06 · 12</b>Retrasos académicos o técnicos del equipo.<i>Aceptar: reserva de contingencia y reasignación.</i></li>
+            <li class="md"><b>R-09 · 10</b>Pérdida o corrupción de datos en la migración.<i>Mitigar: migración por lotes y reversión probada.</i></li>
+            <li class="md"><b>R-10 · 10</b>Ataques o accesos no autorizados.<i>Mitigar: roles mínimos, consultas parametrizadas y HTTPS.</i></li>
             <li class="md"><b>R-04 · 9</b>Cambios en los requerimientos.<i>Evitar: control de cambios con el patrocinador.</i></li>
             <li class="md"><b>R-05 · 9</b>Poca disponibilidad de los usuarios.<i>Mitigar: sesiones agendadas por fase.</i></li>
+            <li class="md"><b>R-07 · 8</b>Rotación o ausencia de un integrante clave.<i>Mitigar: responsable de respaldo por paquete.</i></li>
+            <li class="md"><b>R-08 · 8</b>Caída del servidor o del alojamiento.<i>Mitigar: VPS con SLA ≥ 99.9 % y plan de restauración.</i></li>
           </ul>
         </div>
       </div>
@@ -494,11 +586,16 @@
 
     <div class="plan" id="p-adq" role="tabpanel" hidden>
       <h3>Plan de adquisiciones</h3>
-      <p class="plan-p">El proyecto aprovecha el ERP existente, por lo que las adquisiciones son mínimas: solo la partida de infraestructura y licencias (S/ 100.00) para el alojamiento o la ampliación del servidor y las copias de seguridad durante el despliegue (paquete 2.5.1).</p>
+      <p class="plan-p">El proyecto aprovecha el ERP existente, por lo que las adquisiciones son mínimas.</p>
+      <div class="metrics three">
+        <div><b>S/ 260</b><span>Servidor VPS de pruebas (2 vCPU, 8 GB) por cuatro meses</span></div>
+        <div><b>S/ 80</b><span>Almacenamiento para respaldos en la nube</span></div>
+        <div><b>S/ 200</b><span>Material de capacitación y refrigerios</span></div>
+      </div>
       <div class="steps5 three">
         <div><b>Contrato</b><span>A precio fijo.</span></div>
-        <div><b>Selección</b><span>Al menos dos cotizaciones: precio, soporte y compatibilidad con el ERP.</span></div>
-        <div><b>Aprobación</b><span>La compra la aprueba el patrocinador; si ya existe la infraestructura, la partida pasa a la reserva.</span></div>
+        <div><b>Selección</b><span>Al menos dos cotizaciones: precio, soporte, ubicación de los datos y compatibilidad con el ERP.</span></div>
+        <div><b>Aprobación</b><span>El director, dentro del presupuesto; el patrocinador, si supera la partida.</span></div>
       </div>
     </div>
   </div>
@@ -512,23 +609,51 @@
       <h2>Medir con valor ganado, no solo con porcentajes</h2>
     </header>
     <div class="kpis">
-      <div class="kpi reveal"><b>SPI</b><span>EV / PV</span><em>≥ 0.95</em><small>Semanal</small></div>
-      <div class="kpi reveal"><b>CPI</b><span>EV / AC</span><em>≥ 0.95</em><small>Semanal</small></div>
-      <div class="kpi reveal"><b>Exactitud</b><span>Coincidencias / conteos</span><em>≥ 98 %</em><small>Pruebas y despliegue</small></div>
-      <div class="kpi reveal"><b>Requisitos</b><span>RF y RNF aprobados / 15</span><em>100 %</em><small>Por fase</small></div>
-      <div class="kpi reveal"><b>Cambios</b><span>Resueltos en ≤ 3 días</span><em>100 %</em><small>Quincenal</small></div>
-      <div class="kpi reveal"><b>Avance</b><span>Terminadas / planificadas</span><em>Línea base</em><small>Semanal</small></div>
+      <div class="kpi reveal"><b>SPI</b><span>EV / PV · meta ≥ 0.95</span><em>0.99</em><small>Semanal</small></div>
+      <div class="kpi reveal"><b>CPI</b><span>EV / AC · meta ≥ 0.95</span><em>0.98</em><small>Semanal</small></div>
+      <div class="kpi reveal"><b>Avance físico</b><span>Terminado / total</span><em>83 %</em><small>Semanal</small></div>
+      <div class="kpi reveal"><b>Exactitud</b><span>Coincidencias / conteos · meta ≥ 98 %</span><em>97 %</em><small>En pruebas</small></div>
+      <div class="kpi reveal"><b>Requisitos</b><span>RF y RNF aceptados / 15</span><em>11 (73 %)</em><small>Por fase</small></div>
+      <div class="kpi reveal"><b>Cambios</b><span>Resueltos en ≤ 3 días</span><em>2 de 2</em><small>Quincenal</small></div>
     </div>
     <div class="evm reveal">
       <div class="evm-gauge" id="evm-gauge"></div>
       <div>
-        <h3>Corte al 29/10/2026</h3>
-        <p>Inicio, planificación, análisis y diseño concluidos; en curso la construcción del módulo de catálogo padre e hijo. Valor planificado acumulado: <b>S/ 358.52</b> de un BAC de <b>S/ 1,100.00</b>.</p>
-        <h4>Gestión de cambios</h4>
-        <ol class="mini-steps">
-          <li>Registro de la solicitud</li><li>Análisis de impacto</li><li>Decisión del patrocinador</li><li>Actualización de EDT, cronograma y presupuesto</li><li>Verificación y cierre</li>
-        </ol>
+        <h3>Valor ganado al corte del 20/11/2026</h3>
+        <p>Concluyeron el inicio, la planificación, el análisis, el diseño, tres de los cuatro módulos y las pruebas de balance. El módulo operativo de almacén va al 95 % y la corrección de errores al 75 %; para compensarlo se adelantaron la migración (30 %), el manual (10 %) y la validación de entregables (25 %).</p>
+        <div class="tbl-wrap"><table class="tbl evm-tbl">
+          <tbody>
+            <tr><td>BAC</td><td class="num">S/ 32,925.00</td><td>Línea base de costos</td></tr>
+            <tr><td>PV</td><td class="num">S/ 27,051.00</td><td>82 % del BAC debía estar ejecutado</td></tr>
+            <tr><td>EV</td><td class="num">S/ 26,876.25</td><td>Trabajo realmente terminado</td></tr>
+            <tr><td>AC</td><td class="num">S/ 27,420.00</td><td>Incluye S/ 350 de contingencia usados en la SC-01</td></tr>
+            <tr><td>SV · CV</td><td class="num">−174.75 · −543.75</td><td>Leve retraso y leve sobrecosto</td></tr>
+            <tr><td>EAC</td><td class="num">S/ 33,591.13</td><td>BAC / CPI; lo cubre la contingencia</td></tr>
+            <tr><td>VAC</td><td class="num">−S/ 666.13</td><td>20 % de la reserva de contingencia</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">SPI y CPI sobre 0.95: la desviación es de nivel 1 y la resuelve el director, que reforzó la corrección de errores con un segundo desarrollador.</p>
       </div>
+    </div>
+    <div class="changes reveal">
+      <h3>Registro de solicitudes de cambio</h3>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Código</th><th>Solicitante</th><th>Descripción</th><th>Impacto</th><th>Decisión</th></tr></thead>
+        <tbody>
+          <tr><td><b>SC-01</b></td><td>Ventas</td><td>Combo promocional con componentes intercambiables.</td><td>+2 días en 2.3.4 y S/ 350; sin efecto en el hito final.</td><td><span class="tag ok">Aprobada</span> 19/11/2026, con la reserva de contingencia.</td></tr>
+          <tr><td><b>SC-02</b></td><td>Almacén</td><td>Reporte de componentes con stock mínimo para armar combos.</td><td>+3 días y S/ 520; afectaría la ruta crítica.</td><td><span class="tag wait">Postergada</span> para una mejora después del cierre.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="lesson reveal">
+      <div>
+        <p class="kicker">Lección aprendida N.º 01 · reunión del 15/11/2026</p>
+        <h3>Un cambio sin registro cuesta más en retrabajo de lo que ahorra</h3>
+        <p>Los usuarios pidieron cambios por WhatsApp y de forma verbal, y una parte se atendió directamente en el módulo de almacén, lo que generó retrabajo y nuevos errores en el Kardex. Se registraron SC-01 y SC-02, se congelaron los cambios no aprobados, se analizó su impacto en tres días y se fijó un canal único hacia el director.</p>
+        <p><b>Recomendación:</b> el control de cambios es un proceso continuo desde la reunión de inicio, no una actividad al final del cronograma.</p>
+        <div class="lesson-btns"><button class="chip-btn" data-doc-open="reunion">Ver acta de reunión</button><button class="chip-btn" data-doc-open="leccion">Ver lección completa</button></div>
+      </div>
+      <button class="ishikawa" data-lightbox="assets/img/ishikawa.png" aria-label="Ampliar el diagrama de Ishikawa"><img src="assets/img/ishikawa.png" alt="Diagrama de Ishikawa: personas, métodos, procesos, comunicación, herramientas y gestión como causas de los retrabajos en el módulo de almacén" loading="lazy"></button>
     </div>
   </div>
 </section>
@@ -643,10 +768,13 @@
     </header>
     <div class="viewer bleed reveal">
       <div class="viewer-tabs" role="tablist" aria-label="Documentos">
-        <button role="tab" aria-selected="true" data-doc="informe"><b>Informe final</b><span>23 páginas</span></button>
-        <button role="tab" aria-selected="false" data-doc="acta"><b>Acta de constitución</b><span>4 hojas</span></button>
-        <button role="tab" aria-selected="false" data-doc="edt"><b>EDT / WBS</b><span>WBS Schedule Pro</span></button>
-        <button role="tab" aria-selected="false" data-doc="crono"><b>Cronograma</b><span>ProjectLibre</span></button>
+        <button role="tab" aria-selected="true" data-doc="informe"><b>Informe final</b><span>48 páginas · V. Final</span></button>
+        <button role="tab" aria-selected="false" data-doc="acta"><b>Acta de constitución</b><span>V.2 · 4 hojas</span></button>
+        <button role="tab" aria-selected="false" data-doc="edt"><b>EDT / WBS</b><span>draw.io</span></button>
+        <button role="tab" aria-selected="false" data-doc="crono"><b>Cronograma</b><span>ProjectLibre V3</span></button>
+        <button role="tab" aria-selected="false" data-doc="costeo"><b>Costeo y presupuesto</b><span>V.2 · 4 hojas</span></button>
+        <button role="tab" aria-selected="false" data-doc="reunion"><b>Acta de reunión</b><span>15/11/2026</span></button>
+        <button role="tab" aria-selected="false" data-doc="leccion"><b>Lección aprendida N.º 01</b><span>Con Ishikawa</span></button>
       </div>
       <div class="viewer-body">
         <div class="viewer-bar">
@@ -674,20 +802,32 @@
         <h3>Evaluación de objetivos al cierre</h3>
         <ul class="checks">
           <li><b>Alcance</b>9 RF y 6 RNF validados y aceptados.</li>
-          <li><b>Cronograma</b>Entregables e hitos según la línea base, cierre el 28/12/2026.</li>
-          <li><b>Costo</b>Ejecución dentro de S/ 1,210.00, con CPI ≥ 0.95.</li>
+          <li><b>Cronograma</b>Entregables e hitos según la línea base, SPI ≥ 0.95 y cierre el 10/12/2026.</li>
+          <li><b>Costo</b>Ejecución dentro de S/ 39,510.00, con CPI ≥ 0.95.</li>
           <li><b>Calidad</b>Pruebas de balance del Kardex aprobadas y 0 errores críticos.</li>
+          <li><b>Valor</b>Beneficios medidos al mes 1 y al mes 3, con informe firmado por el patrocinador.</li>
         </ul>
       </div>
       <div class="reveal">
         <h3>Lecciones aprendidas</h3>
         <ul class="lessons">
+          <li><b>Cambios</b>Difundir el canal único desde el inicio y no implementar nada sin aprobación (LA-01).</li>
           <li><b>Alcance</b>Validar cada receta BOM con almacén antes de construir.</li>
           <li><b>Calidad</b>Automatizar las pruebas de balance del Kardex desde el inicio.</li>
           <li><b>Interesados</b>Agendar validaciones al inicio de cada fase.</li>
           <li><b>Cronograma</b>Vigilar la ruta crítica cada semana en ProjectLibre.</li>
         </ul>
       </div>
+    </div>
+    <div class="recs reveal">
+      <h3>Recomendaciones para futuros proyectos</h3>
+      <ol>
+        <li>Constituir el comité y difundir el flujo de cambios en la reunión de inicio.</li>
+        <li>Presupuestar con tarifas de mercado y sobrecostos laborales, separando contingencia y reserva de gestión.</li>
+        <li>Hacer conteo físico, respaldo verificado y prueba de restauración antes de migrar datos.</li>
+        <li>Medir el avance con valor ganado cada semana y los beneficios después del cierre.</li>
+        <li>Reutilizar las plantillas (acta, EDT, cronograma, actas y registros) como activos de la organización.</li>
+      </ol>
     </div>
     <div class="pmbok reveal">
       <h3>PMBOK 7 frente a PMBOK 8</h3>
@@ -697,7 +837,8 @@
           <tr><td>Enfoque</td><td>Principios y resultados, sin procesos detallados.</td><td>Integra principios con procesos, sin perder el enfoque en valor.</td></tr>
           <tr><td>Principios</td><td>12 principios.</td><td>6 principios más concretos.</td></tr>
           <tr><td>Dominios</td><td>8 dominios de desempeño.</td><td>7 dominios: gobernanza, alcance, cronograma, finanzas, interesados, recursos y riesgos.</td></tr>
-          <tr><td>En este proyecto</td><td>Útil para adaptar el enfoque.</td><td>Sus dominios guiaron directamente los planes.</td></tr>
+          <tr><td>Gobernanza y finanzas</td><td>Aparecen de forma transversal.</td><td>Son dominios propios; amplía PMO, adquisiciones e IA.</td></tr>
+          <tr><td>En este proyecto</td><td>Útil para adaptar el enfoque y centrarse en el valor.</td><td>Guiaron la gobernanza, el presupuesto, los riesgos y los beneficios.</td></tr>
         </tbody>
       </table></div>
     </div>

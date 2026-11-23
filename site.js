@@ -7,7 +7,8 @@
   const fecha = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
   const corta = (s) => { const [, m, d] = s.split("-"); return `${d}/${m}`; };
   const DIA = 86400000;
-  const INI = fecha("2026-08-24"), FIN = fecha("2026-12-28");
+  const INI = fecha("2026-08-20"), FIN = fecha("2026-12-10");
+  const porWbs = (w) => TAREAS.find((t) => t[1] === w);
 
   /* ---------------- navegación ---------------- */
   function navegacion() {
@@ -95,9 +96,9 @@
     if (HOY < INI) etiqueta = "Por iniciar";
     if (HOY > FIN) etiqueta = "Proyecto cerrado";
     $("#estado-proyecto").innerHTML = `
-      <div class="st-top"><span class="st-dot"></span><b>${etiqueta}</b><span>${pct} % del cronograma transcurrido</span></div>
-      <div class="st-bar"><span style="width:${pct}%"></span></div>
-      <p>${actuales.length ? "Fases en curso hoy: " + actuales.join(" · ") : "Línea base: 24/08/2026 → 28/12/2026"}</p>`;
+      <div class="st-top"><span class="st-dot"></span><b>${etiqueta}</b><span>Avance real 83 % · ${pct} % del plazo transcurrido</span></div>
+      <div class="st-bar"><span style="width:83%"></span></div>
+      <p>${actuales.length ? "Fases en curso hoy: " + actuales.join(" · ") : "Línea base: 20/08/2026 → 10/12/2026"} · corte ProjectLibre al 20/11/2026</p>`;
   }
 
   /* ---------------- presentación ---------------- */
@@ -145,15 +146,17 @@
 
   /* ---------------- etapas ---------------- */
   const ETAPAS = [
-    { n: "Inicio", ini: "2026-08-24", fin: "2026-09-08", ent: ["Entrevistas con el patrocinador", "Acta de constitución", "Registro de interesados", "Hito: acta firmada (08/09)"] },
-    { n: "Planificación", ini: "2026-09-09", fin: "2026-10-05", ent: ["Lista de requerimientos (9 RF, 6 RNF)", "Plan de gestión del alcance", "EDT / WBS", "Cronograma en ProjectLibre", "Costos y presupuesto", "Plan de riesgos y comunicaciones"] },
-    { n: "Ejecución", ini: "2026-10-06", fin: "2026-11-23", ent: ["Reuniones de coordinación semanales", "Asignación y supervisión de tareas", "Análisis AS-IS / TO-BE y reglas BOM", "Diseño de BD de despiece y Kardex", "Construcción de los módulos del ERP"] },
-    { n: "Monitoreo y control", ini: "2026-11-24", fin: "2026-12-14", ent: ["Control de avance con valor ganado", "Control de solicitudes de cambio", "Pruebas de balance del Kardex y usabilidad", "Corrección de errores", "Validación y aceptación de entregables"] },
-    { n: "Cierre", ini: "2026-12-15", fin: "2026-12-28", ent: ["Informe final del proyecto", "Lecciones aprendidas", "Despliegue, manual y capacitación", "Cierre administrativo y firma", "Hito: cierre del proyecto (28/12)"] },
+    { n: "Inicio", w: "1.1", ini: "2026-08-20", fin: "2026-09-01", ent: ["Entrevistas con el patrocinador", "Acta de constitución", "Registro de interesados", "Hito: acta firmada (31/08)"] },
+    { n: "Planificación", w: "1.2", ini: "2026-09-01", fin: "2026-09-17", ent: ["Lista de requerimientos (9 RF, 6 RNF)", "Plan de gestión del alcance", "EDT / WBS y cronograma", "Costos y presupuesto", "Plan de riesgos y comunicaciones", "En paralelo: análisis AS-IS / TO-BE y reglas BOM"] },
+    { n: "Ejecución", w: "1.3", ini: "2026-09-18", fin: "2026-11-04", ent: ["Reuniones de coordinación semanales", "Asignación y supervisión de tareas", "Diseño de la BD de despiece y Kardex", "Construcción de los módulos del ERP", "Desarrollo de entregables de gestión"] },
+    { n: "Monitoreo y control", w: "1.4", ini: "2026-11-05", fin: "2026-11-25", ent: ["Control de avance con valor ganado", "Control de solicitudes de cambio (SC-01 y SC-02)", "Pruebas de balance del Kardex y corrección de errores", "Validación y aceptación de entregables"] },
+    { n: "Cierre", w: "1.5", ini: "2026-11-26", fin: "2026-12-10", ent: ["Informe final del proyecto", "Lecciones aprendidas", "Despliegue, manual y capacitación", "Cierre administrativo y firma", "Validación final con el patrocinador", "Hito: cierre del proyecto (10/12)"] },
   ];
+  const avance = (e) => porWbs(e.w)[8];
   function estadoDe(e) {
-    if (HOY > fecha(e.fin)) return ["done", "Completada"];
-    if (HOY >= fecha(e.ini)) return ["now", "En curso"];
+    const a = avance(e);
+    if (a >= 100) return ["done", "Completada"];
+    if (a > 0 || HOY >= fecha(e.ini)) return ["now", `En curso · ${a} %`];
     return ["next", "Pendiente"];
   }
   function etapas() {
@@ -161,7 +164,7 @@
     cont.innerHTML = ETAPAS.map((e, k) => {
       const [c, t] = estadoDe(e);
       const dur = Math.round((fecha(e.fin) - fecha(e.ini)) / DIA) + 1;
-      const av = c === "done" ? 100 : c === "next" ? 0 : Math.round(((HOY - fecha(e.ini)) / (fecha(e.fin) - fecha(e.ini) + DIA)) * 100);
+      const av = avance(e);
       return `<button class="stage ${c}" role="tab" aria-selected="false" data-k="${k}">
         <span class="sg-num">${k + 1}</span><b>${e.n}</b><small>${corta(e.ini)} – ${corta(e.fin)} · ${dur} días</small>
         <span class="sg-state">${t}</span><span class="sg-bar"><i style="width:${av}%"></i></span></button>`;
@@ -174,7 +177,7 @@
     };
     cont.addEventListener("click", (ev) => { const b = ev.target.closest(".stage"); if (b) elegir(+b.dataset.k); });
     const actual = ETAPAS.findIndex((e) => estadoDe(e)[0] === "now");
-    elegir(actual >= 0 ? actual : HOY > FIN ? ETAPAS.length - 1 : 0);
+    elegir(actual >= 0 ? actual : ETAPAS.length - 1);
   }
 
   /* ---------------- pestañas de planes ---------------- */
@@ -188,11 +191,11 @@
   /* ---------------- cronograma (Gantt) ---------------- */
   function gantt() {
     const cont = $("#gantt");
-    const t0 = fecha("2026-08-17"), t1 = fecha("2027-01-04");
+    const t0 = fecha("2026-08-17"), t1 = fecha("2026-12-21");
     const total = (t1 - t0) / DIA;
     const pos = (d) => (((fecha(d) - t0) / DIA) / total) * 100;
     const ancho = (a, b) => Math.max(0.6, ((fecha(b) - fecha(a)) / DIA + 1) / total * 100);
-    const meses = [["Ago", "2026-08-17"], ["Set", "2026-09-01"], ["Oct", "2026-10-01"], ["Nov", "2026-11-01"], ["Dic", "2026-12-01"], ["Ene", "2027-01-01"]];
+    const meses = [["Ago", "2026-08-17"], ["Set", "2026-09-01"], ["Oct", "2026-10-01"], ["Nov", "2026-11-01"], ["Dic", "2026-12-01"]];
     const porId = Object.fromEntries(TAREAS.map((t) => [t[0], t]));
     const padre = {};
     const pila = [];
@@ -202,18 +205,18 @@
       pila.push(t);
     });
     const tieneHijos = new Set(Object.values(padre).filter(Boolean));
-    const rama = (id) => { let r = id; while (padre[r]) r = padre[r]; return porId[r][1] === "1" ? "pm" : "dev"; };
+    const rama = (id) => { let r = id; while (padre[r]) r = padre[r]; return porId[r][1] === "2" ? "dev" : "pm"; };
     let html = `<div class="gt-inner"><div class="gt-head"><div class="gt-name">Tarea</div><div class="gt-time">${meses.map(([m, d]) => `<span style="left:${pos(d)}%">${m}</span>`).join("")}</div></div><div class="gt-body">`;
     TAREAS.forEach((t) => {
-      const [id, wbs, n, lvl, a, b, hito, pred] = t;
+      const [id, wbs, n, lvl, a, b, hito, pred, pc] = t;
       const resumen = tieneHijos.has(id);
       const preds = pred.map((p) => porId[p][1] + " " + porId[p][2]).join(", ");
-      const tip = `${wbs} ${n}\n${corta(a)} → ${corta(b)}${preds ? "\nDepende de: " + preds : ""}`;
-      const est = fecha(b) < HOY ? "hecha" : fecha(a) <= HOY ? "curso" : "";
+      const tip = `${wbs} ${n}\n${corta(a)} → ${corta(b)} · avance ${pc} %${preds ? "\nDepende de: " + preds : ""}`;
+      const est = pc >= 100 ? "hecha" : pc > 0 ? "curso" : "";
       html += `<div class="gt-row lvl${lvl} ${resumen ? "sum" : ""}" data-id="${id}" data-padre="${padre[id] || ""}">
         <div class="gt-name">${resumen ? `<button class="gt-tog" aria-expanded="true" aria-label="Contraer ${n}">▾</button>` : "<span class='gt-sp'></span>"}<span class="gt-wbs">${wbs}</span><span class="gt-n">${n}</span></div>
         <div class="gt-time">${hito ? `<span class="gt-ms" style="left:${pos(a)}%" title="${tip}"></span><span class="gt-mslbl" style="left:${pos(a)}%">${corta(a)}</span>`
-          : `<span class="gt-bar ${rama(id)} ${resumen ? "sumbar" : ""} ${est}" style="left:${pos(a)}%;width:${ancho(a, b)}%" title="${tip}"></span>`}</div></div>`;
+          : `<span class="gt-bar ${rama(id)} ${resumen ? "sumbar" : ""} ${est}" style="left:${pos(a)}%;width:${ancho(a, b)}%" title="${tip}">${resumen ? "" : `<i style="width:${pc}%"></i>`}</span>${resumen ? "" : `<span class="gt-pc" style="left:calc(${pos(a) + ancho(a, b)}% + 4px)">${pc}%</span>`}`}</div></div>`;
     });
     html += `</div><span class="gt-today" style="left:calc(var(--gt-name) + (100% - var(--gt-name)) * ${pos(HOY.toISOString().slice(0, 10)) / 100})" title="Hoy"></span></div>`;
     cont.innerHTML = html;
@@ -249,24 +252,29 @@
 
   /* ---------------- curva S, riesgos y EVM ---------------- */
   function curvaS() {
-    const datos = [["Ago", 10.23], ["Set", 127.73], ["Oct", 385.23], ["Nov", 858.52], ["Dic", 1100]];
-    const W = 540, H = 290, m = { l: 56, r: 20, t: 24, b: 34 };
+    const datos = [["Ago", 3230], ["Set", 11775], ["Oct", 20435.67], ["Nov", 30269], ["Dic", 32925]];
+    const W = 540, H = 290, m = { l: 62, r: 20, t: 24, b: 34 }, MAX = 36000;
     const x = (i) => m.l + (i * (W - m.l - m.r)) / (datos.length - 1);
-    const y = (v) => H - m.b - (v / 1200) * (H - m.t - m.b);
-    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S: costo planificado acumulado de S/ 10.23 en agosto a S/ 1,100 en diciembre"><defs><linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a4262c" stop-opacity=".28"/><stop offset="1" stop-color="#a4262c" stop-opacity="0"/></linearGradient></defs>`;
-    [0, 300, 600, 900, 1200].forEach((v) => { s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e2e8f0"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#64748b">${v}</text>`; });
+    const y = (v) => H - m.b - (v / MAX) * (H - m.t - m.b);
+    const sol = (v) => "S/ " + v.toLocaleString("es-PE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S: costo planificado acumulado de S/ 3,230 en agosto a S/ 32,925 en diciembre; al 20/11 el valor ganado es S/ 26,876 y el costo real S/ 27,420"><defs><linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a4262c" stop-opacity=".22"/><stop offset="1" stop-color="#a4262c" stop-opacity="0"/></linearGradient></defs>`;
+    [0, 9000, 18000, 27000, 36000].forEach((v) => { s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e2e0dc"/><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#64748b">${(v / 1000).toLocaleString("es-PE")} mil</text>`; });
     const pts = datos.map((d, i) => `${x(i)},${y(d[1])}`).join(" ");
     s += `<polygon points="${x(0)},${y(0)} ${pts} ${x(4)},${y(0)}" fill="url(#gS)"/>`;
     s += `<polyline class="draw" points="${pts}" fill="none" stroke="#a4262c" stroke-width="3" stroke-linejoin="round"/>`;
     datos.forEach((d, i) => {
-      s += `<circle cx="${x(i)}" cy="${y(d[1])}" r="5" fill="#fff" stroke="#a4262c" stroke-width="2.5"><title>${d[0]} 2026: S/ ${d[1].toFixed(2)}</title></circle><text x="${x(i)}" y="${H - 12}" text-anchor="middle" font-size="12" fill="#64748b">${d[0]}</text>`;
+      s += `<circle cx="${x(i)}" cy="${y(d[1])}" r="5" fill="#fff" stroke="#a4262c" stroke-width="2.5"><title>${d[0]} 2026 · PV acumulado: ${sol(d[1])}</title></circle><text x="${x(i)}" y="${H - 12}" text-anchor="middle" font-size="12" fill="#64748b">${d[0]}</text>`;
     });
-    s += `<text x="${x(4) - 8}" y="${y(1100) - 10}" text-anchor="end" font-size="12" font-weight="700" fill="#1e293b">BAC S/ 1,100</text>`;
+    const xc = x(2 + 20 / 30);
+    s += `<line x1="${xc}" x2="${xc}" y1="${m.t}" y2="${H - m.b}" stroke="#a4262c" stroke-dasharray="4 4" stroke-opacity=".5"/><text x="${xc - 6}" y="${m.t + 10}" text-anchor="end" font-size="11" fill="#a4262c">Corte 20/11</text>`;
+    s += `<circle cx="${xc}" cy="${y(26876.25)}" r="6" fill="#2f7d4f"><title>EV al 20/11: ${sol(26876.25)}</title></circle><circle cx="${xc}" cy="${y(27420)}" r="6" fill="#c2410c"><title>AC al 20/11: ${sol(27420)}</title></circle>`;
+    s += `<text x="${xc + 10}" y="${y(26876.25) + 16}" font-size="11" fill="#2f7d4f">EV 26.9 mil</text><text x="${xc + 10}" y="${y(27420) - 6}" font-size="11" fill="#c2410c">AC 27.4 mil</text>`;
+    s += `<text x="${x(4) - 8}" y="${y(32925) - 10}" text-anchor="end" font-size="12" font-weight="700" fill="#1e293b">BAC S/ 32,925</text>`;
     $("#curva").innerHTML = s + "</svg>";
   }
 
   function mapaRiesgos() {
-    const R = [["R-01", 4, 4], ["R-02", 3, 5], ["R-03", 3, 5], ["R-04", 3, 3], ["R-05", 3, 3], ["R-06", 3, 4]];
+    const R = [["R-01", 4, 4], ["R-02", 3, 5], ["R-03", 3, 5], ["R-04", 3, 3], ["R-05", 3, 3], ["R-06", 3, 4], ["R-07", 2, 4], ["R-08", 2, 4], ["R-09", 2, 5], ["R-10", 2, 5], ["R-11", 3, 5]];
     let h = "";
     for (let p = 5; p >= 1; p--) {
       h += `<div class="lbl">${p}</div>`;
@@ -280,12 +288,12 @@
   }
 
   function evm() {
-    const pct = 358.52 / 1100, r = 70, c = 2 * Math.PI * r;
-    $("#evm-gauge").innerHTML = `<svg viewBox="0 0 180 180" role="img" aria-label="Valor planificado al 29/10: 33 % del presupuesto">
+    const pct = 26876.25 / 32925, r = 70, c = 2 * Math.PI * r;
+    $("#evm-gauge").innerHTML = `<svg viewBox="0 0 180 180" role="img" aria-label="Valor ganado al 20/11: 82 % del presupuesto hasta la conclusión">
       <circle cx="90" cy="90" r="${r}" fill="none" stroke="#ead6d7" stroke-width="16"/>
       <circle class="ring" cx="90" cy="90" r="${r}" fill="none" stroke="#a4262c" stroke-width="16" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}" style="--off:${c * (1 - pct)}" transform="rotate(-90 90 90)"/>
-      <text x="90" y="88" text-anchor="middle" font-size="34" font-weight="800" fill="#1e293b" font-family="Segoe UI, Inter, sans-serif">33%</text>
-      <text x="90" y="112" text-anchor="middle" font-size="12" fill="#64748b">PV / BAC</text></svg>`;
+      <text x="90" y="88" text-anchor="middle" font-size="34" font-weight="800" fill="#1e293b" font-family="Segoe UI, Inter, sans-serif">82%</text>
+      <text x="90" y="112" text-anchor="middle" font-size="12" fill="#64748b">EV / BAC</text></svg>`;
   }
 
   /* ---------------- zoom de imágenes y lightbox ---------------- */
@@ -310,10 +318,13 @@
 
   /* ---------------- visor de documentos ---------------- */
   const DOCS = {
-    informe: { t: "Informe final", f: "assets/docs/Informe_Grupo03_Tarde.pdf", pdf: true },
-    acta: { t: "Acta de constitución", f: "assets/docs/ActaConstitucion_Grupo03_Tarde.pdf" },
-    edt: { t: "EDT / WBS", f: "assets/docs/EDT_Grupo03_Tarde.pdf" },
-    crono: { t: "Cronograma", f: "assets/docs/Cronograma_Grupo03_Tarde.pdf", pdf: true },
+    informe: { t: "Informe final (V. Final)", f: "assets/docs/Informe_Grupo03_Tarde.pdf", pdf: true },
+    acta: { t: "Acta de constitución (V.2)", f: "assets/docs/ActaConstitucion_Grupo03_Tarde.pdf", hojas: "acta", n: 4 },
+    edt: { t: "EDT / WBS", f: "assets/docs/EDT_Grupo03_Tarde.pdf", img: "assets/img/edt.png", w: 1800, oscuro: true },
+    crono: { t: "Cronograma con avance al 20/11/2026", f: "assets/docs/Cronograma_Grupo03_Tarde.pdf", img: "assets/img/gantt.png", w: 1100 },
+    costeo: { t: "Costeo y presupuesto (V.2)", f: "assets/docs/CosteoPresupuesto_Grupo03_Tarde.pdf", hojas: "costeo", n: 4, nombres: ["Costeo 1/2", "Costeo 2/2", "Por tipo de recurso", "Por entregable"] },
+    reunion: { t: "Acta de reunión del 15/11/2026", f: "assets/docs/ActaReunion_15-11-2026.pdf", hojas: "reunion", n: 2 },
+    leccion: { t: "Lección aprendida N.º 01", f: "assets/docs/LeccionAprendida01_Grupo03_Tarde.pdf", hojas: "leccion", n: 3, nombres: ["Hoja 1", "Hoja 2", "Ishikawa"] },
   };
   function visor() {
     const frame = $("#viewer-frame");
@@ -322,23 +333,32 @@
       const d = DOCS[k];
       $("#doc-title").textContent = d.t;
       $("#doc-dl").href = d.f;
-      if (k === "acta") {
-        frame.innerHTML = `<div class="acta"><div class="acta-thumbs">${[1, 2, 3, 4].map((n) => `<button data-n="${n}" aria-label="Hoja ${n}" ${n === 1 ? 'aria-current="true"' : ""}><img src="assets/img/acta/acta-${n}-t.jpg" alt=""><span>Hoja ${n}</span></button>`).join("")}</div>
-          <div class="acta-page"><img id="acta-img" src="assets/img/acta/acta-1.jpg" alt="Acta de constitución, hoja 1 de 4"></div></div>`;
+      if (d.hojas) {
+        const nom = (i) => (d.nombres ? d.nombres[i - 1] : "Hoja " + i);
+        const ns = Array.from({ length: d.n }, (_, i) => i + 1);
+        frame.innerHTML = `<div class="acta"><div class="acta-thumbs">${ns.map((n) => `<button data-n="${n}" aria-label="${nom(n)}" ${n === 1 ? 'aria-current="true"' : ""}><img src="assets/img/hojas/${d.hojas}-${n}-t.jpg" alt=""><span>${nom(n)}</span></button>`).join("")}</div>
+          <div class="acta-page"><img id="acta-img" src="assets/img/hojas/${d.hojas}-1.jpg" alt="${d.t}, ${nom(1)}"></div></div>`;
         frame.querySelector(".acta-thumbs").addEventListener("click", (e) => {
           const b = e.target.closest("button"); if (!b) return;
           $$(".acta-thumbs button", frame).forEach((o) => o.removeAttribute("aria-current"));
           b.setAttribute("aria-current", "true");
-          const img = $("#acta-img"); img.src = `assets/img/acta/acta-${b.dataset.n}.jpg`; img.alt = `Acta de constitución, hoja ${b.dataset.n} de 4`;
+          const img = $("#acta-img"); img.src = `assets/img/hojas/${d.hojas}-${b.dataset.n}.jpg`; img.alt = `${d.t}, ${nom(+b.dataset.n)}`;
         });
-      } else if (k === "edt") {
-        frame.innerHTML = `<div class="pan dark-pan"><img src="assets/img/edt.png" alt="EDT del proyecto" style="width:1800px"></div>`;
+      } else if (d.img) {
+        frame.innerHTML = `<div class="pan ${d.oscuro ? "" : "light-pan"}"><img src="${d.img}" alt="${d.t}" style="width:${d.w}px"></div>`;
       } else {
         frame.innerHTML = pdf(d.f);
       }
     };
     const btns = $$(".viewer-tabs [role=tab]");
-    btns.forEach((b) => b.addEventListener("click", () => { btns.forEach((o) => o.setAttribute("aria-selected", o === b)); render(b.dataset.doc); }));
+    const abrir = (k) => { btns.forEach((o) => o.setAttribute("aria-selected", o.dataset.doc === k)); render(k); };
+    btns.forEach((b) => b.addEventListener("click", () => abrir(b.dataset.doc)));
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-doc-open]");
+      if (!b) return;
+      abrir(b.dataset.docOpen);
+      $("#documentos").scrollIntoView({ behavior: "smooth" });
+    });
     $("#doc-full").addEventListener("click", () => pantallaCompleta($(".viewer-body")));
     render("informe");
   }

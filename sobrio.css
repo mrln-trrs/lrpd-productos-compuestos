@@ -1,0 +1,47 @@
+/* =====================================================================
+   Capa sobria: un solo color institucional, sin texturas ni adornos.
+   ===================================================================== */
+body::after { display: none; }
+body::before { background: #f1efec !important; }
+
+/* números grandes de fondo e iconos decorativos */
+.big-num, .hero::after { display: none !important; }
+.pi-ico { display: none; }
+.pillar::before { display: none; }
+
+/* títulos: sin palabras resaltadas en color */
+.hero h1 em, .sec-head h2 em { color: inherit; font-family: inherit; font-style: normal; font-weight: inherit; }
+.kicker::before { display: none; }
+
+/* franja de cifras: neutra */
+.hero-stats { gap: 0 !important; border-top: 1px solid #d6d2cc; border-bottom: 1px solid #d6d2cc; }
+.hero-stats div, .hero-stats div:nth-child(n) { background: transparent !important; background-image: none !important; color: #1c1c1c !important; border-right: 1px solid #d6d2cc; }
+.hero-stats div:last-child { border-right: 0; }
+.hero-stats dt { color: #6b6b6b !important; }
+.hero-stats dd { color: #1c1c1c; }
+
+/* equipo: iniciales en gris, el director en el color institucional */
+.mb-ini, .member .mb-ini, .member:nth-child(n) .mb-ini { background: #6b6b6b !important; }
+.member.lead .mb-ini { background: var(--red) !important; }
+.member.lead { background: rgba(255, 255, 255, .5) !important; background-image: none !important; }
+
+/* secciones oscuras, portada de diapositivas y pie sin ruido */
+.section.dark, .s-cover, .footer { background-image: none !important; }
+
+/* título de cada sección arriba de su contenido */
+.split > .wrap { display: block !important; }
+.split > .wrap > .sec-head { position: relative !important; top: 0 !important; margin-bottom: 32px !important; }
+.split .pillars { grid-template-columns: 1fr 1fr 1fr; }
+.split .pillars .pillar:first-child { grid-column: auto; }
+.split .team { grid-template-columns: 1fr 1fr 1fr; }
+.split .member.lead { grid-column: span 3; }
+
+/* criterios de cierre pendientes: sin visto verde */
+.checks.pending li::before { content: "○"; background: transparent; color: var(--muted); border: 1px solid #b9b4ad; }
+.muted { color: var(--muted); margin: 0 0 10px; }
+
+@media (max-width: 900px) {
+  .split .pillars, .split .team { grid-template-columns: 1fr; }
+  .split .member.lead { grid-column: auto; }
+  .hero-stats div { border-right: 0; border-bottom: 1px solid #d6d2cc; }
+}

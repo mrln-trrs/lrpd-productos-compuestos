@@ -290,7 +290,7 @@
 
   function evm() {
     const pct = 26876.25 / 32925, r = 70, c = 2 * Math.PI * r;
-    $("#evm-gauge").innerHTML = `<svg viewBox="0 0 180 180" role="img" aria-label="Valor ganado al 20/11: 82 % del presupuesto hasta la conclusión">
+    $("#evm-gauge").innerHTML = `<svg viewBox="0 0 180 180" role="img" aria-label="Valor ganado al 20/11: 82 % del presupuesto hasta la conclusión (BAC)">
       <circle cx="90" cy="90" r="${r}" fill="none" stroke="#ead6d7" stroke-width="16"/>
       <circle class="ring" cx="90" cy="90" r="${r}" fill="none" stroke="#a4262c" stroke-width="16" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}" style="--off:${c * (1 - pct)}" transform="rotate(-90 90 90)"/>
       <text x="90" y="88" text-anchor="middle" font-size="34" font-weight="800" fill="#1e293b" font-family="Segoe UI, Inter, sans-serif">82%</text>
@@ -319,21 +319,23 @@
 
   /* ---------------- visor de documentos ---------------- */
   const DOCS = {
-    informe: { t: "Informe final (V. Final)", f: "assets/docs/Informe_Grupo03_Tarde.pdf", pdf: true },
-    acta: { t: "Acta de constitución (V.2)", f: "assets/docs/ActaConstitucion_Grupo03_Tarde.pdf", hojas: "acta", n: 4 },
-    edt: { t: "EDT / WBS", f: "assets/docs/EDT_Grupo03_Tarde.pdf", img: "assets/img/edt.png", w: 1800, oscuro: true },
-    crono: { t: "Cronograma con avance al 20/11/2026", f: "assets/docs/Cronograma_Grupo03_Tarde.pdf", img: "assets/img/gantt.png", w: 1100 },
-    costeo: { t: "Costeo y presupuesto (V.2)", f: "assets/docs/CosteoPresupuesto_Grupo03_Tarde.pdf", hojas: "costeo", n: 4, nombres: ["Costeo 1/2", "Costeo 2/2", "Por tipo de recurso", "Por entregable"] },
-    reunion: { t: "Acta de reunión del 15/11/2026", f: "assets/docs/ActaReunion_15-11-2026.pdf", hojas: "reunion", n: 2 },
-    leccion: { t: "Lección aprendida N.º 01", f: "assets/docs/LeccionAprendida01_Grupo03_Tarde.pdf", hojas: "leccion", n: 3, nombres: ["Hoja 1", "Hoja 2", "Ishikawa"] },
+    informe: { t: "Informe final", f: "assets/docs/LRPD V.Final - Gestion de Proyecto.pdf", pdf: true },
+    acta: { t: "Acta de constitución del proyecto", f: "assets/docs/Acta_Constitucion.pdf", hojas: "acta", n: 5 },
+    edt: { t: "EDT / WBS", f: "assets/docs/EDT_Grupo03_Tarde.drawio", img: "assets/img/edt.png", w: 1800, oscuro: true },
+    crono: { t: "Cronograma de actividades con avance al 20/11/2026", f: "assets/docs/Cronograma_Actividades_LRPDV3.pod", img: "assets/img/gantt.png", w: 1100 },
+    costeo: { t: "Costeo del proyecto", f: "assets/docs/CND_Costeo_del_Proyecto.pdf", hojas: "costeo", n: 3 },
+    ptr: { t: "Presupuesto por fase y tipo de recurso", f: "assets/docs/CND_Presupuesto_Fase_Tipo_Recurso.pdf", hojas: "ptr", n: 1 },
+    pfe: { t: "Presupuesto por fase y entregable", f: "assets/docs/CND_Presupuesto_Fase_Y_Entregable.pdf", hojas: "pfe", n: 1 },
+    reunion: { t: "Acta de reunión del 15/11/2026", f: "assets/docs/Acta_de_Reunion_15-11-2026.pdf", hojas: "reunion", n: 2 },
+    leccion: { t: "Lección aprendida N.º 01", f: "assets/docs/Leccion_Aprendida_01_Control_Solicitudes_Cambio.pdf", hojas: "leccion", n: 3 },
   };
   function visor() {
     const frame = $("#viewer-frame");
-    const pdf = (f) => `<object data="${f}#view=FitH" type="application/pdf" class="pdf"><div class="pdf-fallback"><p>Tu navegador no muestra PDF dentro de la página.</p><a class="btn btn-primary" href="${f}" target="_blank" rel="noopener">Abrir el PDF</a></div></object>`;
+    const pdf = (f) => (f = encodeURI(f), `<object data="${f}#view=FitH" type="application/pdf" class="pdf"><div class="pdf-fallback"><p>Tu navegador no muestra PDF dentro de la página.</p><a class="btn btn-primary" href="${f}" target="_blank" rel="noopener">Abrir el PDF</a></div></object>`);
     const render = (k) => {
       const d = DOCS[k];
       $("#doc-title").textContent = d.t;
-      $("#doc-dl").href = d.f;
+      $("#doc-dl").href = encodeURI(d.f); $("#doc-dl").setAttribute("download", d.f.split("/").pop());
       if (d.hojas) {
         const nom = (i) => (d.nombres ? d.nombres[i - 1] : "Hoja " + i);
         const ns = Array.from({ length: d.n }, (_, i) => i + 1);
